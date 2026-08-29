@@ -8,6 +8,21 @@
       name="description"
       content="A decision testing session for founders who want clarity before committing to an important business move."
     >
+    <link rel="canonical" href="https://beforeyoudecideit.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://beforeyoudecideit.com/">
+    <meta property="og:title" content="Before You Decide | Decision Stress Test">
+    <meta property="og:description" content="A decision testing session for founders who want clarity before committing to an important business move.">
+    <meta property="og:image" content="https://beforeyoudecideit.com/assets/before-you-decide-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Before You Decide | Decision Stress Test">
+    <meta name="twitter:description" content="A decision testing session for founders who want clarity before committing to an important business move.">
+    <meta name="twitter:image" content="https://beforeyoudecideit.com/assets/before-you-decide-og.png">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="assets/kraft-offers.css">
     <script src="assets/kraft-offers.js" defer></script>
     <!-- GoatCounter slot:
@@ -19,218 +34,301 @@
     <header class="site-header">
       <a class="wordmark" href="index.html">BEFORE YOU DECIDE</a>
       <nav class="top-nav" aria-label="Navigation">
-        <a href="#test">The test</a>
-        <a href="#format">Format</a>
-        <a href="#about">About</a>
-        <a href="#check">Decision Check</a>
+        <a href="#test" data-i18n="nav.test">The test</a>
+        <a href="#format" data-i18n="nav.format">Format</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#check" data-i18n="nav.check">Decision Check</a>
       </nav>
+      <a class="lang-switcher" href="?lang=ru" data-lang-switch>RU</a>
     </header>
 
     <main>
       <section class="hero dst-hero">
         <div>
-          <p class="kicker">Clarity comes through testing</p>
-          <h1><span>Before you decide it.</span><span>TriMind it.</span></h1>
-          <p class="lead">
-            Bring one real business decision. We put it under pressure from several
-            competing positions so you can see the assumptions, consequences, and blind spots before you act.
+          <p class="kicker" data-i18n="hero.kicker">Clarity comes through testing</p>
+          <h1><span data-i18n="hero.title">Before you decide&nbsp;it.</span><span>TriMind it.</span></h1>
+          <p class="lead" data-i18n="hero.lead">
+            Bring one real business decision - the one you are about to make, not one you are wondering about. We put it under pressure from several positions that disagree with each other, so the assumptions, the consequences, and the blind spots show before you act. The decision may hold. Then you know why.
           </p>
-          <a class="primary-link" href="#check">Take the 3-minute Decision Check</a>
+          <a class="primary-link" href="#check" data-i18n="hero.cta">Take the 3-minute Decision Check</a>
         </div>
       </section>
 
       <section class="section proof-section" id="test">
         <div>
-          <h2>For founders with real stakes</h2>
-          <p>
-            This is for an owner facing a meaningful move now: a pivot, new direction,
-            key hire, partner change, pricing change, new market, more money into an existing product,
-            closing a line, automation with AI, or giving agents more autonomy.
+          <h2 data-i18n="stakes.title">For owners with something real at stake</h2>
+          <p data-i18n="stakes.copy">
+            This is for an owner in front of a move that costs something to make and something to undo: a pivot, a new direction, a key hire, a partner change, a pricing change, a new market, more money into an existing product, closing a line, automation with AI, or giving agents more autonomy. Not a hypothetical. The one on your desk.
           </p>
         </div>
         <div class="founder-proof">
           <div class="proof-card">
-            <div class="proof-row"><strong>16</strong><span>years building small businesses and studios in different countries</span></div>
-            <div class="proof-row"><strong>3</strong><span>years running small business owner meetups in Silicon Valley</span></div>
-            <div class="proof-row"><strong>100+</strong><span>hours of consulting per month</span></div>
-            <p class="proof-note">Author of the Business Mindset board game, which is also becoming part of the TriMind app.</p>
+            <div class="proof-row"><strong>16</strong><span data-i18n="proof.years">years building small businesses and studios in different countries</span></div>
+            <div class="proof-row"><strong>3</strong><span data-i18n="proof.meetups">years running small business owner meetups in Silicon Valley</span></div>
+            <div class="proof-row"><strong>100+</strong><span data-i18n="proof.hours">hours of consulting per month</span></div>
+            <p class="proof-note" data-i18n="proof.note">Author of the Business Mindset board game, now becoming part of the TriMind app.</p>
           </div>
+          <img class="game-photo" src="assets/img/game-board-hand.webp" alt="Business Mindset board game" data-i18n-alt="image.gameBoard" loading="lazy">
         </div>
       </section>
 
-      <section class="section format-section" id="format">
-        <p class="kicker">One decision, one map</p>
-        <h2>What you leave with</h2>
+      <section class="section leave-section" id="format">
+        <p class="kicker" data-i18n="format.kicker">One decision, one map</p>
+        <h2 data-i18n="format.title">What you leave with</h2>
         <div class="steps compact-steps">
           <article>
-            <h3>Decision frame</h3>
-            <p>We make the choice specific enough to test: what is being decided, why now, and what commitment it creates.</p>
+            <h3 data-i18n="format.frameTitle">Decision frame</h3>
+            <p data-i18n="format.frameCopy">First we make the decision specific enough to be tested: what exactly is being decided, why now and not later, and what it commits you to once it is made. Many decisions change shape at this step alone.</p>
           </article>
           <article>
-            <h3>Stress points</h3>
-            <p>We examine the move through market, money, team, timing, implementation, and personal cost.</p>
+            <h3 data-i18n="format.stressTitle">Stress points</h3>
+            <p data-i18n="format.stressCopy">Then we put the move under pressure from market, money, team, timing, implementation, and personal cost - and let them disagree. Where they disagree is where the assumptions live.</p>
           </article>
           <article>
-            <h3>Decision Map</h3>
-            <p>You leave with the case for moving, the case for waiting, what must be checked, and the blind spots that changed the picture.</p>
+            <h3 data-i18n="format.mapTitle">Decision Map</h3>
+            <p data-i18n="format.mapCopy">You leave with a written map: the case for moving, the case for waiting, what must be checked before either, and the blind spots that changed the picture. Written in your words, so a month later it still reads as yours.</p>
           </article>
         </div>
-        <p class="time-note">
-          Format: a short fixed working session around one decision, with a written Decision Map after the session.
-          Available in person in California during the upcoming trip, or remote from Da Nang with scheduling adjusted for time zones.
-        </p>
       </section>
 
-      <section class="section price-section">
+      <section class="section crystal-section">
+        <img class="crystal-image" src="assets/img/decision-crystal.webp" alt="The Decision Crystal: six faces" data-i18n-alt="image.crystal" loading="lazy">
         <div>
-          <p class="kicker">Full price</p>
-          <h2>$250 for one Decision Stress Test</h2>
+          <h2 data-i18n="crystal.title">The Decision Crystal</h2>
+          <p data-i18n="crystal.copy">
+            Every decision has six faces: market, money, team, timing, implementation, personal cost. A face that has not been tested stays dark. A tested face lights up. A cracked one shows where the decision does not hold. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step.
+          </p>
         </div>
-        <p>
-          You are not buying advice or consulting hours. You are buying clarity before commitment:
-          a structured test of one consequential business decision and a usable map of what the test revealed.
+      </section>
+
+      <section class="section format-section">
+        <h2 data-i18n="session.title">Format</h2>
+        <p data-i18n="session.copy">
+          You fill in a short form and come to a 30-minute session. There we look at your question from several angles, and you decide whether to go deeper or whether it is already clear. I work online, one on one. Sometimes in groups. In person in California: during the upcoming trip and at our studio evening.
         </p>
       </section>
 
-      <section class="section ladder-section">
-        <h2>After the test</h2>
-        <p>
-          If the map shows that you want support after the test, the door stays open:
-          Decision Advisory, a Business Mindset session, and later the TriMind app, where the method
-          will be available for independent use. No pressure to continue.
-        </p>
+      <section class="section price-section ladder-section">
+        <div>
+          <p class="kicker" data-i18n="ladder.kicker">The ladder</p>
+          <h2 data-i18n="ladder.title">Ladder</h2>
+        </div>
+        <div class="ladder-list">
+          <p data-i18n="ladder.free">$0. The first step: the Decision Check on this page and a 30-minute session. You see what you had not seen and decide whether to go further.</p>
+          <p data-i18n="ladder.test">$250. Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. Not advice, not consulting hours. Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. Usable the next morning.</p>
+          <p data-i18n="ladder.risk">If in the first 30 minutes of the stress test you see it is not for you, we stop, and you do not pay.</p>
+          <p data-i18n="ladder.advisory">$500 a month. Advisory in a mastermind format: four sessions of ninety minutes, one decision carried to its first real action, with homework and tools between sessions.</p>
+          <p data-i18n="ladder.close">Each step is named once, when it fits. The rest is your call.</p>
+        </div>
+        <div class="event-row" id="event">
+          <p class="event-note">
+            <span data-i18n="event.before">September 26, 6 pm, Milpitas, Silicon Valley, our studio: an evening about decisions. To get an invitation, send DECISION by direct message on</span>
+            <a href="https://www.instagram.com/alesianezh/" target="_blank" rel="noopener">Instagram</a>
+            <span data-i18n="event.or">or</span>
+            <a href="https://www.linkedin.com/in/alesia-yuzhakov/" target="_blank" rel="noopener">LinkedIn</a><span data-i18n="event.after">.</span>
+          </p>
+          <img class="event-photo" src="assets/img/event-studio.webp" alt="Studio event room" data-i18n-alt="image.event" loading="lazy">
+        </div>
+      </section>
+
+      <section class="section map-section">
+        <h2 data-i18n="map.title">What a Decision Map looks like</h2>
+        <article class="sample-map">
+          <p class="map-eyebrow" data-i18n="map.label">DECISION MAP</p>
+          <div class="map-block">
+            <h3 data-i18n="map.decisionTitle">The decision</h3>
+            <p data-i18n="map.decisionCopy">move all positioning to one territory: an owner's important and expensive decisions. Horizon: 90 days, to the end of November.</p>
+          </div>
+          <div class="map-block">
+            <h3 data-i18n="map.moveTitle">The case for moving</h3>
+            <p data-i18n="map.moveCopy">A channel of trust and a live network of owners already exist; a clear person and a clear buying moment; the service can be sold before the app ships; one principle holds everything: clarity through testing.</p>
+          </div>
+          <div class="map-block">
+            <h3 data-i18n="map.waitTitle">The case for waiting</h3>
+            <p data-i18n="map.waitCopy">The app is not ready, and the temptation to sell it is real; the network was built in a different role; over 90 days the positioning will want to change three times on the reaction to single posts.</p>
+          </div>
+          <div class="map-block">
+            <h3 data-i18n="map.checkTitle">What to check before either</h3>
+            <p data-i18n="map.checkCopy">Ten conversations with owners at the moment of a decision, by September 4: how many reach a session, how many buy. What they buy: a single test or a month. Where they come from: social, referrals, meetups.</p>
+          </div>
+          <div class="map-block">
+            <h3 data-i18n="map.unseenTitle">What I had not seen</h3>
+            <p data-i18n="map.unseenCopy">The choice was already made; what was collected afterwards was weighed against it. The open question was a different one: not whether, but when and how much to commit. And a second thing: people had already been coming for this and leaving with free instructions; what was lost was not demand but the door.</p>
+          </div>
+          <div class="map-block">
+            <h3 data-i18n="map.nextTitle">Next step</h3>
+            <p data-i18n="map.nextCopy">The page lives at its address, the Decision Check is open, the first ten messages are sent. Date: September 4, the first Friday count.</p>
+          </div>
+        </article>
+        <p class="map-caption" data-i18n="map.caption">Example: the author's own decision, August 2026</p>
       </section>
 
       <section class="section about-section" id="about">
-        <h2>WHO IS BEHIND THIS</h2>
+        <h2 data-i18n="about.title">WHO IS BEHIND THIS</h2>
         <div class="about-intro">
-          <!-- Add the portrait when ready:
-          <img class="founder-photo" src="assets/alesia-portrait.jpg" alt="Alesia Yuzhakov">
-          -->
-          <p>
-            Alesia Yuzhakov, host and author. Sixteen years in small business, and the
-            last two in AI technology. Co-founder of AI TriMind.
+          <img class="founder-photo" src="assets/img/portrait.webp" alt="Alesia Yuzhakov" data-i18n-alt="image.portrait" loading="lazy">
+          <p data-i18n="about.intro">
+            Alesia Yuzhakov, host and author. Sixteen years in small business, the last two in AI technology. Co-founder of AI TriMind.
           </p>
         </div>
-        <p>
-          I have made a lot of decisions in my career. The hard part was never the
-          decision itself. It was deciding without knowing what to expect, and then
-          fixing the consequences. Technology has changed that: today you can walk
-          through the possible scenarios before you commit. That is what we build.
+        <p data-i18n="about.copy1">
+          I have made a lot of decisions in my career. The hard part was never the decision itself. It was deciding without knowing what to expect, and then fixing what I could not have seen. Technology has changed that: today you can walk the possible scenarios before you commit. That is what we build.
         </p>
-        <p>
-          For three and a half years I ran a photo and video studio and event space in
-          Silicon Valley, hosting 15 to 20 events a month. There I wrote the first
-          Business Mindset board game, so that owners would sit at one table and talk
-          about their real businesses. I ran it in person, one on one and in groups,
-          produced it in the United States, and nearly the entire print run sold. The
-          small business owner meetups I have run since then grew a circle of founders
-          in the Valley who keep coming back with their next decision. Several of them
-          changed direction after those sessions and told me so.
+        <p data-i18n="about.copy2">
+          For three and a half years I ran a photo and video studio and event space in Silicon Valley, with 15 to 20 events a month. That is where I wrote the first Business Mindset board game - so that owners would sit at one table and talk about their real businesses, not their plans. I ran it in person, one on one and in groups, produced it in the United States, and nearly the whole print run sold. The small business owner meetups I have run since grew into a circle of founders in the Valley who keep coming back with their next decision. Several changed direction after those sessions and told me so.
         </p>
-        <p>
-          Then I went looking for a technical partner and found a team. AI TriMind is
-          now a technology company. The Business Mindset game is digitized, and with it
-          a simulator of decision scenarios, daily practices, and sprints, all inside
-          the TriMind app. The app releases in autumn 2026. Behind it stands a serious
-          engineering team and an agent system of our own.
+        <p data-i18n="about.copy3">
+          Then I went looking for a technical partner and found a team. AI TriMind is now a technology company. The Business Mindset game is digitized, and with it a simulator of decision scenarios, daily practices, and sprints - all inside the TriMind app, releasing in autumn 2026. Behind it stands a serious engineering team and an agent system of our own.
         </p>
-        <p>
+        <p data-i18n="about.copy4">
           The Decision Stress Test is the same method, run live, with me.
         </p>
         <p class="about-link">
-          <a href="https://www.linkedin.com/in/alesia-yuzhakov/" target="_blank" rel="noopener">Alesia on LinkedIn</a>
+          <a href="https://www.linkedin.com/in/alesia-yuzhakov/" target="_blank" rel="noopener" data-i18n="about.linkedin">Alesia on LinkedIn</a>
         </p>
+        <!-- YouTube video slot, enabled when the operator sends the video id:
+        <div class="video-slot">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Alesia Yuzhakov" loading="lazy" allowfullscreen></iframe>
+        </div>
+        -->
       </section>
 
       <section class="section check-section" id="check">
-        <h2>If the decision feels too important to get wrong</h2>
-        <p>
-          Run a private check before you book a call. Your answers stay in your browser;
-          we only count how many people finish the check.
+        <h2 data-i18n="check.title">If this one feels too important to get wrong</h2>
+        <p data-i18n="check.intro">
+          A few taps, one decision. You get its type, the one blind spot most often unlooked-at in decisions like it, and the door to a call. Your answers stay in your browser; we count only how many people finish.
         </p>
         <form class="decision-check" data-decision-check data-calendly-url="https://calendly.com/trmnd-ai/decision-call">
           <fieldset>
-            <legend>Do you have an existing business?</legend>
-            <label class="choice"><input type="radio" name="business" value="Yes" required><span>Yes</span></label>
-            <label class="choice"><input type="radio" name="business" value="No"><span>No</span></label>
+            <legend data-i18n="q.business">Do you run a business today?</legend>
+            <label class="choice"><input type="radio" name="business" value="Yes" required><span data-i18n="option.yes">Yes</span></label>
+            <label class="choice"><input type="radio" name="business" value="No"><span data-i18n="option.no">No</span></label>
           </fieldset>
 
           <fieldset>
-            <legend>What decision is on the table?</legend>
-            <label class="choice"><input type="radio" name="decisionType" value="pivot" required><span>pivot</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="new direction"><span>new direction</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="key hire"><span>key hire</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="partner change"><span>partner change</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="pricing change"><span>pricing change</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="new market"><span>new market</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="more money into an existing product"><span>more money into an existing product</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="closing a line"><span>closing a line</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="automation with AI"><span>automation with AI</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="giving AI agents more autonomy"><span>giving AI agents more autonomy</span></label>
-            <label class="choice"><input type="radio" name="decisionType" value="other"><span>other</span></label>
+            <legend data-i18n="q.decisionType">What decision is on the table?</legend>
+            <label class="choice"><input type="radio" name="decisionType" value="pivot" required><span data-i18n="decision.pivot">pivot</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="new direction"><span data-i18n="decision.newDirection">new direction</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="key hire"><span data-i18n="decision.keyHire">key hire</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="partner change"><span data-i18n="decision.partnerChange">partner change</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="pricing change"><span data-i18n="decision.pricingChange">pricing change</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="new market"><span data-i18n="decision.newMarket">new market</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="more money into an existing product"><span data-i18n="decision.moreMoney">more money into an existing product</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="closing a line"><span data-i18n="decision.closingLine">closing a line</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="automation with AI"><span data-i18n="decision.automation">automation with AI</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="giving AI agents more autonomy"><span data-i18n="decision.agentAutonomy">giving AI agents more autonomy</span></label>
+            <label class="choice"><input type="radio" name="decisionType" value="other"><span data-i18n="decision.other">other</span></label>
           </fieldset>
 
           <fieldset>
-            <legend>Why now?</legend>
-            <label class="choice"><input type="radio" name="whyNow" value="deadline" required><span>deadline</span></label>
-            <label class="choice"><input type="radio" name="whyNow" value="an opportunity that will not wait"><span>an opportunity that will not wait</span></label>
-            <label class="choice"><input type="radio" name="whyNow" value="something is already hurting"><span>something is already hurting</span></label>
-            <label class="choice"><input type="radio" name="whyNow" value="people around me push for it"><span>people around me push for it</span></label>
-            <label class="choice"><input type="radio" name="whyNow" value="it has been on my mind for a long time"><span>it has been on my mind for a long time</span></label>
+            <legend data-i18n="q.whyNow">Why now?</legend>
+            <label class="choice"><input type="radio" name="whyNow" value="deadline" required><span data-i18n="why.deadline">deadline</span></label>
+            <label class="choice"><input type="radio" name="whyNow" value="an opportunity that will not wait"><span data-i18n="why.opportunity">an opportunity that will not wait</span></label>
+            <label class="choice"><input type="radio" name="whyNow" value="something is already hurting"><span data-i18n="why.hurting">something is already hurting</span></label>
+            <label class="choice"><input type="radio" name="whyNow" value="people around me push for it"><span data-i18n="why.push">people around me push for it</span></label>
+            <label class="choice"><input type="radio" name="whyNow" value="it has been on my mind for a long time"><span data-i18n="why.longTime">it has been on my mind for a long time</span></label>
           </fieldset>
 
           <fieldset>
-            <legend>What is at stake?</legend>
-            <label class="choice"><input type="checkbox" name="stakes" value="money"><span>money</span></label>
-            <label class="choice"><input type="checkbox" name="stakes" value="team"><span>team</span></label>
-            <label class="choice"><input type="checkbox" name="stakes" value="months of work"><span>months of work</span></label>
-            <label class="choice"><input type="checkbox" name="stakes" value="a market or a client"><span>a market or a client</span></label>
-            <label class="choice"><input type="checkbox" name="stakes" value="a partner relationship"><span>a partner relationship</span></label>
-            <label class="choice"><input type="checkbox" name="stakes" value="a missed opportunity"><span>a missed opportunity</span></label>
+            <legend data-i18n="q.stakes">If it goes wrong, what is lost? (choose several)</legend>
+            <label class="choice"><input type="checkbox" name="stakes" value="money"><span data-i18n="stake.money">money</span></label>
+            <label class="choice"><input type="checkbox" name="stakes" value="team"><span data-i18n="stake.team">team</span></label>
+            <label class="choice"><input type="checkbox" name="stakes" value="months of work"><span data-i18n="stake.months">months of work</span></label>
+            <label class="choice"><input type="checkbox" name="stakes" value="a market or a client"><span data-i18n="stake.market">a market or a client</span></label>
+            <label class="choice"><input type="checkbox" name="stakes" value="a partner relationship"><span data-i18n="stake.partner">a partner relationship</span></label>
+            <label class="choice"><input type="checkbox" name="stakes" value="a missed opportunity"><span data-i18n="stake.missed">a missed opportunity</span></label>
           </fieldset>
 
           <fieldset>
-            <legend>What blocks clarity?</legend>
-            <label class="choice"><input type="radio" name="clarityBlock" value="chosenCollecting" required><span>I have already chosen but keep collecting information</span></label>
-            <label class="choice"><input type="radio" name="clarityBlock" value="researching"><span>I keep researching instead of deciding</span></label>
-            <label class="choice"><input type="radio" name="clarityBlock" value="partnerDiffers"><span>my partner or co-founder sees it differently</span></label>
-            <label class="choice"><input type="radio" name="clarityBlock" value="stoppedChecking"><span>I am sure, so I stopped checking it</span></label>
-            <label class="choice"><input type="radio" name="clarityBlock" value="fearExcitement"><span>I cannot tell whether it is fear or excitement</span></label>
-            <label class="choice"><input type="radio" name="clarityBlock" value="alreadyInvested"><span>too much is already invested to stop</span></label>
+            <legend data-i18n="q.clarity">What is between you and a clear answer? (one)</legend>
+            <label class="choice"><input type="radio" name="clarityBlock" value="chosenCollecting" required><span data-i18n="clarity.chosenCollecting">I have already chosen but keep collecting information</span></label>
+            <label class="choice"><input type="radio" name="clarityBlock" value="researching"><span data-i18n="clarity.researching">I keep researching instead of deciding</span></label>
+            <label class="choice"><input type="radio" name="clarityBlock" value="partnerDiffers"><span data-i18n="clarity.partnerDiffers">my partner or co-founder sees it differently</span></label>
+            <label class="choice"><input type="radio" name="clarityBlock" value="stoppedChecking"><span data-i18n="clarity.stoppedChecking">I am sure, so I stopped checking</span></label>
+            <label class="choice"><input type="radio" name="clarityBlock" value="fearExcitement"><span data-i18n="clarity.fearExcitement">I cannot tell whether it is fear or excitement</span></label>
+            <label class="choice"><input type="radio" name="clarityBlock" value="alreadyInvested"><span data-i18n="clarity.alreadyInvested">too much is already invested to stop</span></label>
           </fieldset>
 
           <fieldset>
-            <legend>Is there a deadline?</legend>
-            <label class="choice"><input type="radio" name="deadline" value="Yes" required><span>Yes</span></label>
-            <label class="choice"><input type="radio" name="deadline" value="No"><span>No</span></label>
+            <legend data-i18n="q.deadline">Is there a date this has to be decided by?</legend>
+            <label class="choice"><input type="radio" name="deadline" value="Yes" required><span data-i18n="option.yes">Yes</span></label>
+            <label class="choice"><input type="radio" name="deadline" value="No"><span data-i18n="option.no">No</span></label>
           </fieldset>
 
-          <button class="copy-button" type="submit">Show my check result</button>
+          <button class="copy-button" type="submit" data-i18n="check.submit">Show my result</button>
         </form>
 
         <article class="decision-result" data-decision-result hidden>
-          <p class="kicker">Decision Check result</p>
+          <p class="kicker" data-i18n="result.kicker">Your Decision Check</p>
           <h3 data-result-title></h3>
+          <p class="result-type" data-result-type></p>
           <p data-result-blindspot></p>
-          <a class="primary-link" href="https://calendly.com/trmnd-ai/decision-call" data-book-call>Book a free 30-minute call</a>
+          <form class="email-result" data-email-result>
+            <!-- Formspree endpoint placeholder:
+            Set action="https://formspree.io/f/YOUR_FORM_ID" and remove disabled states when the operator creates the form.
+            -->
+            <label>
+              <span data-i18n="email.label">Email</span>
+              <input type="email" name="email" autocomplete="email" disabled>
+            </label>
+            <label class="email-consent">
+              <input type="checkbox" name="followup" disabled>
+              <span data-i18n="email.consent">You may write to me once to ask how the decision went</span>
+            </label>
+            <input type="hidden" name="result" data-email-result-payload>
+            <button class="copy-button" type="button" disabled data-i18n="email.submit">Send me my result</button>
+            <p class="email-note" data-i18n="email.note">Email sending will be available soon.</p>
+          </form>
+          <a class="primary-link" href="https://calendly.com/trmnd-ai/decision-call" data-book-call data-i18n="result.book">Book a free 30-minute call</a>
+          <p class="door-note" data-door-note></p>
           <p class="copy-status" role="status" aria-live="polite" data-result-status></p>
         </article>
 
-        <a class="secondary-link contact-share" href="https://t.me/share/url?text=DECISION" data-share="telegram">
+        <a class="secondary-link contact-share" href="https://t.me/share/url?text=DECISION" data-share="telegram" data-i18n="result.telegram">
           Prefer DM? Send DECISION
         </a>
       </section>
+
+      <section class="section faq-section" id="faq">
+        <h2 data-i18n="faq.title">Questions</h2>
+        <div class="faq-list">
+          <details>
+            <summary data-i18n="faq.q1">Is this coaching?</summary>
+            <p data-i18n="faq.answer1">No. One decision, tested from several sides, with a written map. No programs to enroll in and no personality types.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q2">What if I have already decided?</summary>
+            <p data-i18n="faq.answer2">Then the test shows why the decision holds and what to check before the first step. A clear yes is a strong result.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q3">Do I need to prepare?</summary>
+            <p data-i18n="faq.answer3">No. Bring the decision as it is. The 30-minute session starts from your words.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q4">Confidentiality.</summary>
+            <p data-i18n="faq.answer4">What you bring stays between us. Nothing about your decision is published or shared; your check answers stay in your browser; the map is yours.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q5">What if I am not sure it is a real decision?</summary>
+            <p data-i18n="faq.answer5">Take the check: the first questions are exactly about that. If it is early, the check says so, kindly.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q6">Which language?</summary>
+            <p data-i18n="faq.answer6">Sessions in English or Russian, whichever you prefer.</p>
+          </details>
+        </div>
+      </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="footer">
       <p class="social-links">
         <a href="https://www.instagram.com/alesianezh/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.youtube.com/@AITriMind" target="_blank" rel="noopener">YouTube</a>
         <a href="https://www.linkedin.com/in/alesia-yuzhakov/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://t.me/AITriMind" target="_blank" rel="noopener">Telegram</a>
       </p>
-      <p>Business consulting and decision testing. Not medical, clinical, legal, tax, or investment advice.</p>
+      <p data-i18n="footer.legal">Business consulting and decision testing. Not medical, clinical, legal, tax, or investment advice.</p>
+      <p data-i18n="footer.disclaimer">The Decision Check, the session and the stress test help you see a decision more fully. The decision and the actions that follow remain yours: responsibility for a decision and its consequences stays with the person who makes it. We do not guarantee outcomes and do not replace professional advice where it is needed.</p>
     </footer>
   </body>
 </html>

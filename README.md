@@ -27,6 +27,8 @@ Then open:
 - LinkedIn: `https://www.linkedin.com/in/alesia-yuzhakov/`.
 - Telegram: `https://t.me/AITriMind`.
 - Analytics choice: GoatCounter. The page has a commented script slot in `index.html`.
+- Languages: English and Russian. The page auto-selects Russian for `navigator.language`
+  values that start with `ru`; `?lang=ru` and `?lang=en` override that and are saved.
 
 Optional portrait:
 
