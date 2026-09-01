@@ -25,10 +25,11 @@ const strings = {
       copy: "This is for an owner in front of a move that changes a lot for a long time: a pivot, a new direction, a key hire, a partner change, a pricing change, a new market, more money into an existing product, closing a line, automation with AI, or giving agents more autonomy. The one on your desk."
     },
     proof: {
+      person: "Alesia Yuzhakov, who leads the Decision Stress Test",
       years: "years building small businesses and studios in different countries",
       meetups: "years running small business owner meetups in Silicon Valley",
       hours: "hours of consulting per month",
-      note: "Author of the Business Mindset board game, now becoming part of the TriMind app."
+      note: "Author of the Business Mindset board game; the TriMind app is in development."
     },
     format: {
       kicker: "One decision, one map",
@@ -49,8 +50,8 @@ const strings = {
       title: "Ladder",
       free: "$0. The first step: the Decision Check on this page and a 30-minute session. You see what you had not seen and decide whether to go further.",
       test: "$250. Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. Not advice, not consulting hours. Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. Usable the next morning.",
-      risk: "If in the first 30 minutes of the stress test you see it is not for you, we stop, and you do not pay.",
       advisory: "$500 a month. Advisory in a mastermind format: four sessions of ninety minutes, one decision carried to its first real action, with homework and tools between sessions.",
+      partnership: "If our work together fits and we see real potential in the decision, we can support the next stretch with materials, tools, and what we know. This is a possible partnership, not a promise made to everyone.",
       close: "Each step is named once, when it fits. The rest is your call."
     },
     crystal: {
@@ -61,18 +62,18 @@ const strings = {
       title: "What a Decision Map looks like",
       label: "DECISION MAP",
       decisionTitle: "The decision",
-      decisionCopy: "move all positioning to one territory: an owner's important and expensive decisions. Horizon: 90 days, to the end of November.",
+      decisionCopy: "Raise prices for the studio's core service package. Horizon: 90 days.",
       moveTitle: "The case for moving",
-      moveCopy: "A channel of trust and a live network of owners already exist; a clear person and a clear buying moment; the service can be sold before the app ships; one principle holds everything: clarity through testing.",
+      moveCopy: "The current price no longer covers the owner's time, preparation, and follow-up. The best clients already ask for the deeper package, not the cheapest one. A higher price would protect the work and make room for better delivery.",
       waitTitle: "The case for waiting",
-      waitCopy: "The app is not ready, and the temptation to sell it is real; the network was built in a different role; over 90 days the positioning will want to change three times on the reaction to single posts.",
+      waitCopy: "Half the pipeline comes from repeat clients who know the old price. A sharp change could slow bookings for a month and make the team explain value before the new offer is clear enough.",
       checkTitle: "What to check before either",
-      checkCopy: "Ten conversations with owners at the moment of a decision, by September 4: how many reach a session, how many buy. What they buy: a single test or a month. Where they come from: social, referrals, meetups.",
+      checkCopy: "Which clients choose the full package already, which ones only buy on discount, and what the team needs to say so the new price feels specific instead of defensive.",
       unseenTitle: "What I had not seen",
-      unseenCopy: "The choice was already made; what was collected afterwards was weighed against it. The open question was a different one: not whether, but when and how much to commit. And a second thing: people had already been coming for this and leaving with free instructions; what was lost was not demand but the door.",
+      unseenCopy: "The question was not only whether the market would accept the price. The owner was also choosing what kind of work the business would be allowed to keep doing. The risk was not rejection alone; it was staying at a price that made the best work unsustainable.",
       nextTitle: "Next step",
-      nextCopy: "The page lives at its address, the Decision Check is open, the first ten messages are sent. Date: September 4, the first Friday count.",
-      caption: "Example: the author's own decision, August 2026"
+      nextCopy: "Write the new package in one paragraph, test it in three real sales conversations, track where people hesitate, and adjust the explanation before changing the public price.",
+      caption: "Example map: a studio business deciding on a price change."
     },
     event: {
       before: "September 26, 6 pm, Milpitas, Silicon Valley, our studio: an evening about decisions. To get an invitation, send DECISION by direct message on",
@@ -83,8 +84,8 @@ const strings = {
       title: "WHO IS BEHIND THIS",
       intro: "Alesia Yuzhakov, host and author. Sixteen years in small business, the last two in AI technology. Co-founder of AI TriMind.",
       copy1: "I have made a lot of decisions in my career. The hard part was never the decision itself. It was deciding without knowing what to expect, and then fixing what I could not have seen. Technology has changed that: today you can walk the possible scenarios before you commit. That is what we build.",
-      copy2: "For three and a half years I ran a photo and video studio and an event venue in Silicon Valley, with 15 to 20 events a month. One of our studios hosts an evening soon: September 26, Milpitas. That is where I wrote the first Business Mindset board game - so that owners would sit at one table and talk about their real businesses, not their plans. I ran it in person, one on one and in groups, set up production of the printed game in the United States, and nearly the whole print run sold. The small business owner meetups I have run since grew into a circle of founders in the Valley who keep coming back with their next decision. Several changed direction after those sessions and told me so.",
-      copy3: "Then I went looking for a technical partner and found a team. AI TriMind is now a technology company. The Business Mindset game is digitized, and with it a simulator of decision scenarios, daily practices, and sprints - all inside the TriMind app, releasing in autumn 2026. Behind it stands a serious engineering team and an agent system of our own.",
+      copy2: "For three and a half years I ran a photo and video studio and an event venue in Sunnyvale, Silicon Valley, with 15 to 20 events a month. That former studio is where I wrote the first Business Mindset board game - so that owners would sit at one table and talk about their real businesses, not their plans. I ran it in person, one on one and in groups, set up production of the printed game in the United States, and nearly the whole print run sold. The small business owner meetups I have run since grew into a circle of founders in the Valley who keep coming back with their next decision. Several changed direction after those sessions and told me so.",
+      copy3: "Then I went looking for a technical partner and found a team. AI TriMind is now a technology company. The Business Mindset game has been digitized, and the TriMind app is in development: decision scenarios, daily practices, and sprints. Behind it stands a serious engineering team and an agent system of our own.",
       copy4: "The Decision Stress Test is the same method, run live, with me.",
       linkedin: "Alesia on LinkedIn"
     },
@@ -217,10 +218,11 @@ const strings = {
       copy: "Это для владельца бизнеса, который стоит перед шагом, меняющим многое надолго: разворот, новое направление, ключевой найм, смена партнёра, смена цен, новый рынок, ещё деньги в существующий продукт, закрытие направления, автоматизация с ИИ, больше самостоятельности ИИ-агентам. Не гипотетически. То, что лежит у вас на столе."
     },
     proof: {
+      person: "Алеся Южаков, ведущая стресс-теста решения",
       years: "лет строю малый бизнес и студии в разных странах",
       meetups: "года веду встречи владельцев малого бизнеса в Кремниевой долине",
       hours: "часов консультаций в месяц",
-      note: "Автор настольной игры «Бизнес Менталитет», которая становится частью приложения TriMind."
+      note: "Автор настольной игры «Бизнес Менталитет»; приложение TriMind сейчас в разработке."
     },
     format: {
       kicker: "Одно решение, одна карта",
@@ -241,8 +243,8 @@ const strings = {
       title: "Лестница",
       free: "$0. Первый шаг: проверка решения на этой странице и 30-минутная сессия. Вы увидите то, чего не видели, и решите, нужно ли идти дальше.",
       test: "$250. Стресс-тест решения (Decision Stress Test): 2,5 часа личной работы над одним решением и письменная Карта решения после. Это не советы и не консультационные часы. Это ясность до обязательства: одно важное решение, проверенное с нескольких сторон, и карта того, что проверка показала. С ней можно работать уже на следующее утро.",
-      risk: "Если в первые 30 минут стресс-теста вы понимаете, что это не ваше, мы останавливаемся, и вы не платите.",
       advisory: "$500 в месяц. Ведение в формате мастермайнда: четыре встречи по полтора часа, одно решение доводится до первого реального действия, между встречами задания и инструменты.",
+      partnership: "Если наша совместная работа вам подойдёт и мы увидим реальный потенциал в решении, мы сможем сопровождать следующий отрезок: материалами, инструментами и нашими знаниями. Это возможное партнёрство, не обещание для всех.",
       close: "Каждую ступень я называю один раз, когда она подходит. Дальше решаете вы."
     },
     crystal: {
@@ -253,18 +255,18 @@ const strings = {
       title: "Так выглядит Карта решения",
       label: "КАРТА РЕШЕНИЯ",
       decisionTitle: "Решение",
-      decisionCopy: "перевести всё позиционирование на одну территорию: важные и дорогие решения предпринимателя. Срок: 90 дней, до конца ноября.",
+      decisionCopy: "поднять цены на основной пакет услуг студии. Горизонт: 90 дней.",
       moveTitle: "За шаг",
-      moveCopy: "Есть свой канал доверия и живая сеть владельцев; понятный человек и понятная ситуация покупки; услугу можно продавать до выхода приложения; один принцип, который держит всё: ясность через проверку.",
+      moveCopy: "Текущая цена больше не покрывает время владельца, подготовку и сопровождение после работы. Лучшие клиенты уже спрашивают более глубокий пакет, а не самый дешёвый. Более высокая цена защитит качество работы и даст место для лучшего исполнения.",
       waitTitle: "За паузу",
-      waitCopy: "Приложение не готово, и соблазн продавать его есть; сеть накопилась в другой роли; за 90 дней позиционирование хочется поменять трижды по реакции отдельных постов.",
+      waitCopy: "Половина потока приходит от повторных клиентов, которые знают старую цену. Резкое изменение может замедлить записи на месяц и заставит команду объяснять ценность до того, как новый оффер достаточно ясен.",
       checkTitle: "Что проверить до того и другого",
-      checkCopy: "Десять разговоров с владельцами в момент решения до 4 сентября: сколько дошли до сессии, сколько купили. Что покупают: разовый тест или месяц. Откуда приходят: соцсети, рекомендации, встречи.",
+      checkCopy: "Какие клиенты уже выбирают полный пакет, какие покупают только со скидкой, и что команде нужно сказать, чтобы новая цена звучала конкретно, а не защитно.",
       unseenTitle: "Чего не видела",
-      unseenCopy: "Выбор уже был сделан: то, что собиралось после, взвешивалось против него. Открытым был другой вопрос: не «делать ли», а «когда и насколько вкладываться». И второе: люди уже приходили за этим и уходили с бесплатной инструкцией; терялся не спрос, а дверь.",
+      unseenCopy: "Вопрос был не только в том, примет ли рынок цену. Владелец также выбирал, какую работу бизнесу будет можно продолжать делать. Риск был не только в отказах; риск был остаться в цене, при которой лучшая работа становится неустойчивой.",
       nextTitle: "Следующий шаг",
-      nextCopy: "Страница живёт по адресу, Проверка решения открыта, первые десять сообщений отправлены. Дата: 4 сентября, первый пятничный замер.",
-      caption: "Пример: собственное решение автора, август 2026"
+      nextCopy: "Описать новый пакет одним абзацем, проверить его в трёх реальных продажных разговорах, отметить, где люди сомневаются, и уточнить объяснение до изменения публичной цены.",
+      caption: "Пример карты: студийный бизнес, решение о ценах."
     },
     event: {
       before: "26 сентября, 18:00, Милпитас, Silicon Valley, наша студия: вечер о решениях. Чтобы получить приглашение, напишите DECISION в личные сообщения в",
@@ -275,8 +277,8 @@ const strings = {
       title: "Кто за этим",
       intro: "Алеся Южаков, ведущая и автор. Шестнадцать лет в малом бизнесе, последние два в ИИ-технологиях. Сооснователь AI TriMind.",
       copy1: "Я приняла много решений за свою карьеру. Трудным никогда не было само решение. Трудно было решать, не зная, чего ждать, а потом чинить то, чего не могла увидеть заранее. Технологии это изменили: сегодня возможные сценарии можно пройти до того, как вы сделаете шаг. Это мы и строим.",
-      copy2: "Три с половиной года я вела фото- и видеостудию и площадку для мероприятий в Кремниевой долине, по 15-20 событий в месяц. Кстати, в одной из наших студий скоро мероприятие: 26 сентября, Милпитас. Там я написала первую настольную игру «Бизнес Менталитет», чтобы владельцы сели за один стол и говорили о своих настоящих бизнесах, а не о планах. Я вела её вживую, один на один и в группах, наладила производство печатной игры в США, и почти весь тираж разошёлся. Встречи владельцев малого бизнеса, которые я веду с тех пор, выросли в круг основателей в Долине, и они возвращаются со следующим решением. Несколько из них сменили направление после тех сессий и сказали мне об этом.",
-      copy3: "Потом я пошла искать технического партнёра и нашла команду. AI TriMind сегодня технологическая компания. Игра «Бизнес Менталитет» оцифрована, и вместе с ней симулятор сценариев решений, ежедневные практики и спринты, всё внутри приложения TriMind; релиз осенью 2026. За ним стоит серьёзная инженерная команда и наша собственная система агентов.",
+      copy2: "Три с половиной года я вела фото- и видеостудию и площадку для мероприятий в Саннивейл, Кремниевая долина, по 15-20 событий в месяц. В той прежней студии я написала первую настольную игру «Бизнес Менталитет», чтобы владельцы сели за один стол и говорили о своих настоящих бизнесах, а не о планах. Я вела её вживую, один на один и в группах, наладила производство печатной игры в США, и почти весь тираж разошёлся. Встречи владельцев малого бизнеса, которые я веду с тех пор, выросли в круг основателей в Долине, и они возвращаются со следующим решением. Несколько из них сменили направление после тех сессий и сказали мне об этом.",
+      copy3: "Потом я пошла искать технического партнёра и нашла команду. AI TriMind сегодня технологическая компания. Игра «Бизнес Менталитет» оцифрована, и приложение TriMind сейчас в разработке: сценарии решений, ежедневные практики и спринты. За ним стоит серьёзная инженерная команда и наша собственная система агентов.",
       copy4: "Стресс-тест решения: тот же метод, вживую, со мной.",
       linkedin: "Алеся в LinkedIn"
     },
@@ -462,7 +464,7 @@ function setSwitchLink(lang) {
   switcher.dataset.nextLang = nextLang;
 }
 
-function applyLanguage(lang) {
+function setLanguage(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
   document.title = strings[lang].title;
@@ -656,7 +658,7 @@ document.querySelectorAll("[data-lang-switch]").forEach((link) => {
     event.preventDefault();
     const lang = link.dataset.nextLang;
     window.localStorage.setItem("dst-lang", lang);
-    applyLanguage(lang);
+    setLanguage(lang);
   });
 });
 
@@ -677,5 +679,5 @@ document.querySelectorAll("[data-book-call]").forEach((link) => {
 });
 
 if (document.querySelector("[data-lang-switch]")) {
-  applyLanguage(getInitialLang());
+  setLanguage(getInitialLang());
 }

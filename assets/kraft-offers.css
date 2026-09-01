@@ -290,6 +290,14 @@ h3 {
   color: var(--blue);
 }
 
+.proof-person {
+  margin-bottom: 0.15rem;
+  color: var(--green-deep);
+  font-size: 0.86rem;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
 .proof-row span,
 .proof-note {
   color: var(--muted);
@@ -364,6 +372,10 @@ h3 {
 .founder-proof {
   display: grid;
   gap: 1rem;
+}
+
+.dst-page .founder-proof {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .founder-photo,
@@ -463,7 +475,7 @@ h3 {
   margin-bottom: 0;
 }
 
-.ladder-list p:nth-child(3) {
+.ladder-partnership {
   border-left: 0.28rem solid var(--green);
   padding-left: 0.85rem;
   color: var(--green-deep);
@@ -478,8 +490,11 @@ h3 {
   padding-top: 1rem;
 }
 
-.event-note {
+.section .event-note {
+  max-width: none;
+  font-size: 14px;
   font-weight: 740;
+  line-height: 1.35;
 }
 
 .event-note a {
@@ -851,6 +866,10 @@ h3 {
     align-items: start;
   }
 
+  .dst-page .founder-proof {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .crystal-section {
     grid-template-columns: 0.72fr 1fr;
     align-items: center;
@@ -869,9 +888,14 @@ h3 {
     align-items: start;
   }
 
-  .event-row {
-    grid-template-columns: 1fr 14rem;
-    align-items: center;
+  .section .event-note {
+    font-size: 11px;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .event-photo {
+    max-width: 14rem;
   }
 
   .copy-button,
