@@ -64,6 +64,11 @@
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const w = window.innerWidth;
     const h = window.innerHeight;
+    if (w < 2 || h < 2) {
+      // no layout yet (hidden or background tab): paint when the viewport appears
+      state.painted = false;
+      return;
+    }
     state.w = w;
     state.h = h;
     state.dpr = dpr;
@@ -393,10 +398,14 @@
   });
 
   let resizeTimer = 0;
-  window.addEventListener("resize", () => {
+  function repaintSoon() {
     if (!root.isConnected || root.classList.contains("is-breaking")) return;
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(paint, 80);
+  }
+  window.addEventListener("resize", repaintSoon);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && !state.painted) repaintSoon();
   });
 
   Promise.all([

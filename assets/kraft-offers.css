@@ -4,7 +4,8 @@
    No gradients, no shadows, no radius, no cards. Paper stays visible. */
 
 /* Self-hosted type, SIL Open Font License (see assets/fonts/OFL-*.txt).
-   Literata (TypeTogether): variable optical size 7..72, one weight. IBM Plex Mono (IBM): one weight. */
+   Literata (TypeTogether): variable optical size 7..72, one weight.
+   IBM Plex Sans + IBM Plex Mono (IBM): one weight each; Latin and Cyrillic drawn as one family. */
 
 @font-face {
   font-family: "Literata";
@@ -60,6 +61,24 @@
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/plexsans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/plexsans-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
 :root {
   --paper: #f5f1e8;
   --ink: #123934;
@@ -69,7 +88,7 @@
   --ink-18: color-mix(in srgb, var(--ink) 18%, var(--paper));
   --accent: #8f3434;
   --serif: "Literata", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
-  --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --sans: "IBM Plex Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --rule: 1px solid var(--ink-35);
   --rule-strong: 2px solid var(--ink);
@@ -130,6 +149,7 @@ p {
 .kicker,
 .idx,
 .running-head,
+.step-head,
 .top-nav,
 .wordmark,
 .lang-switcher,
@@ -156,6 +176,7 @@ p {
 .idx {
   display: inline-block;
   min-width: 2.4em;
+  white-space: nowrap;
   color: var(--accent);
 }
 
@@ -173,7 +194,7 @@ p {
   top: 0;
   z-index: 20;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem;
   align-items: center;
   padding: 0.8rem var(--gutter);
@@ -183,6 +204,7 @@ p {
 
 .running-head {
   display: flex;
+  align-items: baseline;
   gap: 0.5rem;
   min-width: 0;
   margin: 0;
@@ -266,7 +288,7 @@ p {
 }
 
 .wordmark {
-  flex: 0 0 auto;
+  display: none;
 }
 
 .lang-switcher {
@@ -307,7 +329,7 @@ h1 {
   font-family: var(--serif);
   font-weight: 400;
   font-size: clamp(3rem, 12.4vw, 8.4rem);
-  line-height: 0.9;
+  line-height: 1;
   letter-spacing: -0.015em;
 }
 
@@ -320,10 +342,46 @@ h1 {
   text-shadow: 0.028em 0.02em 0 var(--ink-18);
 }
 
-.dst-page h1 span:last-child {
-  color: var(--accent);
-  font-style: italic;
-  margin-left: 0.08em;
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+/* Cyrillic runs wider: pull the Russian display sizes and tracking in so both languages fill the same volume */
+:lang(ru) h1 {
+  font-size: clamp(2.7rem, 11.2vw, 7.6rem);
+  letter-spacing: -0.01em;
+}
+
+:lang(ru) h2 {
+  font-size: clamp(1.85rem, 5.1vw, 3.3rem);
+}
+
+:lang(ru) .kicker,
+:lang(ru) .running-head,
+:lang(ru) .top-nav,
+:lang(ru) .decision-check legend,
+:lang(ru) .step-head,
+:lang(ru) .plate-caption,
+:lang(ru) .map-caption,
+:lang(ru) .proof-person {
+  letter-spacing: 0.035em;
+}
+
+:lang(ru) .primary-link,
+:lang(ru) .secondary-link,
+:lang(ru) .copy-button,
+:lang(ru) .about-link a,
+:lang(ru) .social-links a {
+  letter-spacing: 0.05em;
+}
+
+:lang(ru) .section p {
+  font-size: 1rem;
+}
+
+:lang(ru) .lead {
+  font-size: clamp(1.06rem, 2.3vw, 1.25rem);
 }
 
 h2 {
@@ -455,7 +513,6 @@ h3 {
 .primary-link:focus-visible,
 .secondary-link:focus-visible,
 .copy-button:focus-visible,
-.choice:focus-within,
 input:focus-visible,
 summary:focus-visible,
 .lang-switcher:focus-visible,
@@ -782,8 +839,8 @@ mark.ink {
 
 .ladder-row {
   display: grid;
-  grid-template-columns: 6.5rem 1fr;
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
   align-items: baseline;
   padding: 1rem 0;
   border-bottom: var(--rule);
@@ -1051,9 +1108,13 @@ mark.ink {
 
 .step-nav {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.75rem;
   margin: 0;
+}
+
+.step-nav .copy-button {
+  flex: 1 1 auto;
+  width: auto;
 }
 
 .step-nav[hidden],
@@ -1110,13 +1171,9 @@ mark.ink {
 }
 
 .choice input:checked {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--ink);
+  border-color: var(--ink);
   box-shadow: inset 0 0 0 2px var(--paper);
-}
-
-.choice:has(input:checked) {
-  color: var(--accent);
 }
 
 .copy-button,
@@ -1402,17 +1459,16 @@ html.cover-open .cover.is-breaking {
   }
 
   .site-header {
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     gap: 2rem;
+  }
+
+  .wordmark {
+    display: block;
   }
 
   .running-head {
     justify-content: center;
-  }
-
-  .top-nav {
-    display: flex;
-    gap: 1.4rem;
   }
 
   .top-nav a {
@@ -1450,13 +1506,13 @@ html.cover-open .cover.is-breaking {
 
   .hero-copy .lead,
   .hero-copy .kicker {
-    max-width: 26rem;
+    max-width: min(26rem, 43%);
   }
 
   .hero-plate {
     grid-column: 2;
     grid-row: 1;
-    margin: 5.5rem calc(-1 * var(--gutter)) 0 -6rem;
+    margin: 5.5rem calc(-1 * var(--gutter)) 0 -0.5rem;
     width: auto;
     max-width: none;
     aspect-ratio: 3 / 4;
@@ -1483,6 +1539,7 @@ html.cover-open .cover.is-breaking {
 
   .ladder-row {
     grid-template-columns: 8rem 1fr;
+    gap: 1rem;
   }
 
   .event-row {
@@ -1510,11 +1567,34 @@ html.cover-open .cover.is-breaking {
   .contact-share {
     width: auto;
   }
+
+  .step-nav .copy-button {
+    flex: 0 0 auto;
+  }
 }
 
 @media (min-width: 64rem) {
+  .site-header {
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+  }
+
+  .top-nav {
+    display: flex;
+    gap: 1.4rem;
+  }
+
+  .hero-plate {
+    margin-left: -3rem;
+  }
+
   .proof-section {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+}
+
+@media (min-width: 80rem) {
+  .hero-plate {
+    margin-left: -6rem;
   }
 }
 
