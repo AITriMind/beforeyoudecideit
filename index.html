@@ -23,8 +23,10 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="assets/kraft-offers.css?v=12">
-    <script src="assets/kraft-offers.js?v=12" defer></script>
+    <link rel="preload" href="assets/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/literata-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/kraft-offers.css?v=14">
+    <script src="assets/kraft-offers.js?v=14" defer></script>
     <!-- GoatCounter slot:
     Create a GoatCounter site, replace MYCODE with its code, and uncomment.
     <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -44,14 +46,17 @@
 
     <main>
       <section class="hero dst-hero">
-        <div>
-          <p class="kicker" data-i18n="hero.kicker">Clarity comes through testing</p>
+        <div class="hero-copy">
+          <p class="kicker"><span class="idx" aria-hidden="true">01</span><span data-i18n="hero.kicker">Clarity comes through testing</span></p>
           <h1><span data-i18n="hero.title">Before you decide&nbsp;it.</span><span>TriMind it.</span></h1>
           <p class="lead" data-i18n="hero.lead">
             Bring one real business decision - the one you are about to make, not one you are wondering about. We put it under pressure from several positions that disagree with each other, so the assumptions, the consequences, and the blind spots show before you act. The decision may hold. Then you know why.
           </p>
           <a class="primary-link" href="#check" data-i18n="hero.cta">Take the 3-minute Decision Check</a>
         </div>
+        <figure class="hero-plate">
+          <img src="assets/img/game-board-hand.webp" alt="Business Mindset board game" data-i18n-alt="image.gameBoard" width="900" height="1301" fetchpriority="high">
+        </figure>
       </section>
 
       <section class="section proof-section" id="test">
@@ -69,31 +74,57 @@
             <div class="proof-row"><strong>100+</strong><span data-i18n="proof.hours">hours of consulting per month</span></div>
             <p class="proof-note" data-i18n="proof.note">Author of the Business Mindset board game; the TriMind app is in development.</p>
           </div>
-          <img class="game-photo" src="assets/img/game-board-hand.webp" alt="Business Mindset board game" data-i18n-alt="image.gameBoard" loading="lazy">
         </div>
       </section>
 
       <section class="section leave-section" id="format">
-        <p class="kicker" data-i18n="format.kicker">One decision, one map</p>
+        <p class="kicker"><span class="idx" aria-hidden="true">02</span><span data-i18n="format.kicker">One decision, one map</span></p>
         <h2 data-i18n="format.title">What you leave with</h2>
         <div class="steps compact-steps">
           <article>
-            <h3 data-i18n="format.frameTitle">Decision frame</h3>
+            <h3><span class="idx" aria-hidden="true">01</span><span data-i18n="format.frameTitle">Decision frame</span></h3>
             <p data-i18n="format.frameCopy">First we make the decision specific enough to be tested: what exactly is being decided, why now and not later, and what it commits you to once it is made. Many decisions change shape at this step alone.</p>
           </article>
           <article>
-            <h3 data-i18n="format.stressTitle">Stress points</h3>
+            <h3><span class="idx" aria-hidden="true">02</span><span data-i18n="format.stressTitle">Stress points</span></h3>
             <p data-i18n="format.stressCopy">Then we put the move under pressure from market, money, team, timing, implementation, and personal cost - and let them disagree. Where they disagree is where the assumptions live.</p>
           </article>
           <article>
-            <h3 data-i18n="format.mapTitle">Decision Map</h3>
+            <h3><span class="idx" aria-hidden="true">03</span><span data-i18n="format.mapTitle">Decision Map</span></h3>
             <p data-i18n="format.mapCopy">You leave with a written map: the case for moving, the case for waiting, what must be checked before either, and the blind spots that changed the picture. Written in your words, so a month later it still reads as yours.</p>
           </article>
         </div>
       </section>
 
       <section class="section crystal-section">
-        <img class="crystal-image" src="assets/img/decision-crystal.webp" alt="The Decision Crystal: six faces" data-i18n-alt="image.crystal" loading="lazy">
+        <figure class="crystal-figure">
+          <svg viewBox="0 0 400 400" role="img" aria-labelledby="crystal-title">
+            <title id="crystal-title" data-i18n="image.crystal">The Decision Crystal: six faces</title>
+            <defs>
+              <pattern id="dots-15" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><circle cx="3" cy="3" r="0.9" fill="#123934"/></pattern>
+              <pattern id="dots-35" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><circle cx="3" cy="3" r="1.45" fill="#123934"/></pattern>
+              <pattern id="dots-60" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><circle cx="3" cy="3" r="2" fill="#123934"/></pattern>
+            </defs>
+            <g stroke="#123934" stroke-width="1.5" stroke-linejoin="round">
+              <polygon points="200,30 347,115 259,166 200,132 141,166 53,115" fill="url(#dots-15)"/>
+              <polygon points="347,115 347,285 259,234 259,166" fill="url(#dots-35)"/>
+              <polygon points="347,285 200,370 200,268 259,234" fill="url(#dots-15)"/>
+              <polygon points="200,370 53,285 141,234 200,268" fill="url(#dots-35)"/>
+              <polygon points="53,285 53,115 141,166 141,234" fill="url(#dots-60)"/>
+              <polygon points="200,132 259,166 259,234 200,268 141,234 141,166" fill="#123934"/>
+            </g>
+            <polyline points="62,150 96,176 84,203 118,222 106,252 132,276" fill="none" stroke="#8f3434" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="96,176 122,170" fill="none" stroke="#8f3434" stroke-width="1.6" stroke-linecap="round"/>
+            <polyline points="118,222 104,236" fill="none" stroke="#8f3434" stroke-width="1.6" stroke-linecap="round"/>
+            <text class="face-label" x="200" y="96" text-anchor="middle" data-i18n="crystal.faceMarket">Market</text>
+            <text class="face-label" x="312" y="203" text-anchor="middle" data-i18n="crystal.faceTeam">Team</text>
+            <text class="face-label" x="260" y="322" text-anchor="middle" data-i18n="crystal.facePersonal">Personal cost</text>
+            <text class="face-label" x="138" y="322" text-anchor="middle" data-i18n="crystal.faceMoney">Money</text>
+            <text class="face-label" x="88" y="203" text-anchor="middle" data-i18n="crystal.faceImplementation">Implementation</text>
+            <text class="face-label on-ink" x="200" y="204" text-anchor="middle" data-i18n="crystal.faceTiming">Timing</text>
+          </svg>
+          <figcaption class="plate-caption"><span class="idx" aria-hidden="true">PL. 01</span><span data-i18n="crystal.plate">Six faces. One dark, one cracked.</span></figcaption>
+        </figure>
         <div>
           <h2 data-i18n="crystal.title">The Decision Crystal</h2>
           <p data-i18n="crystal.copy">
@@ -111,31 +142,32 @@
 
       <section class="section price-section ladder-section">
         <div>
-          <p class="kicker" data-i18n="ladder.kicker">The ladder</p>
+          <p class="kicker"><span class="idx" aria-hidden="true">03</span><span data-i18n="ladder.kicker">The ladder</span></p>
           <h2 data-i18n="ladder.title">Ladder</h2>
         </div>
         <div class="ladder-list">
-          <p data-i18n="ladder.free">$0. The first step: the Decision Check on this page and a 30-minute session. You see what you had not seen and decide whether to go further.</p>
-          <p data-i18n="ladder.test">$250. Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. Not advice, not consulting hours. Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. Usable the next morning.</p>
-          <p data-i18n="ladder.advisory">$500 a month. Advisory in a mastermind format: four sessions of ninety minutes, one decision carried to its first real action, with homework and tools between sessions.</p>
+          <div class="ladder-row"><span class="ladder-price">$0</span><p data-i18n="ladder.free">The first step: the Decision Check on this page and a 30-minute session. You see what you had not seen and decide whether to go further.</p></div>
+          <div class="ladder-row"><span class="ladder-price">$250</span><p data-i18n="ladder.test">Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. Not advice, not consulting hours. Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. Usable the next morning.</p></div>
+          <div class="ladder-row"><span class="ladder-price">$500<small data-i18n="ladder.perMonth">a month</small></span><p data-i18n="ladder.advisory">Advisory in a mastermind format: four sessions of ninety minutes, one decision carried to its first real action, with homework and tools between sessions.</p></div>
           <p class="ladder-partnership" data-i18n="ladder.partnership">If our work together fits and we see real potential in the decision, we can support the next stretch with materials, tools, and what we know. This is a possible partnership, not a promise made to everyone.</p>
           <p data-i18n="ladder.close">Each step is named once, when it fits. The rest is your call.</p>
         </div>
         <div class="event-row" id="event">
           <p class="event-note">
-            <span data-i18n="event.before">September 26, 6 pm, Milpitas, Silicon Valley, our studio: an evening about decisions. To get an invitation, send DECISION by direct message on</span>
+            <span class="circled"><svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M14 31 C 8 6, 178 -2, 190 26 C 199 50, 60 66, 22 48 C 10 42, 12 36, 24 33"/></svg><span data-i18n="event.date">September 26, 6 pm</span></span>
+            <span data-i18n="event.before">Milpitas, Silicon Valley, our studio: an evening about decisions. To get an invitation, send DECISION by direct message on</span>
             <a href="https://www.instagram.com/alesianezh/" target="_blank" rel="noopener">Instagram</a>
             <span data-i18n="event.or">or</span>
             <a href="https://www.linkedin.com/in/alesia-yuzhakov/" target="_blank" rel="noopener">LinkedIn</a><span data-i18n="event.after">.</span>
           </p>
-          <img class="event-photo" src="assets/img/event-studio.webp" alt="Studio event room" data-i18n-alt="image.event" loading="lazy">
+          <img class="event-photo" src="assets/img/event-studio.webp" alt="Studio event room" data-i18n-alt="image.event" width="900" height="506" loading="lazy">
         </div>
       </section>
 
       <section class="section map-section">
         <h2 data-i18n="map.title">What a Decision Map looks like</h2>
         <article class="sample-map">
-          <p class="map-eyebrow" data-i18n="map.label">DECISION MAP</p>
+          <p class="map-eyebrow"><span data-i18n="map.label">DECISION MAP</span><span class="map-eyebrow-label" aria-hidden="true">PL. 02</span></p>
           <div class="map-block">
             <h3 data-i18n="map.decisionTitle">The decision</h3>
             <p data-i18n="map.decisionCopy">Raise prices for the studio's core service package. Horizon: 90 days.</p>
@@ -167,7 +199,7 @@
       <section class="section about-section" id="about">
         <h2 data-i18n="about.title">WHO IS BEHIND THIS</h2>
         <div class="about-intro">
-          <img class="founder-photo" src="assets/img/portrait.webp" alt="Alesia Yuzhakov" data-i18n-alt="image.portrait" loading="lazy">
+          <img class="founder-photo" src="assets/img/portrait.webp" alt="Alesia Yuzhakov" data-i18n-alt="image.portrait" width="560" height="841" loading="lazy">
           <p data-i18n="about.intro">
             Alesia Yuzhakov, host and author. Sixteen years in small business, the last two in AI technology. Co-founder of AI TriMind.
           </p>

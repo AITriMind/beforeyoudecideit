@@ -48,14 +48,22 @@ const strings = {
     ladder: {
       kicker: "Three steps",
       title: "Ladder",
-      free: "$0. The first step: the Decision Check on this page and a 30-minute session. You see what you had not seen and decide whether to go further.",
-      test: "$250. Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. Not advice, not consulting hours. Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. Usable the next morning.",
-      advisory: "$500 a month. Advisory in a mastermind format: four sessions of ninety minutes, one decision carried to its first real action, with homework and tools between sessions.",
+      perMonth: "a month",
+      free: "The first step: the Decision Check on this page and a 30-minute session. You see what you had not seen and decide whether to go further.",
+      test: "Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. Not advice, not consulting hours. Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. Usable the next morning.",
+      advisory: "Advisory in a mastermind format: four sessions of ninety minutes, one decision carried to its first real action, with homework and tools between sessions.",
       partnership: "If our work together fits and we see real potential in the decision, we can support the next stretch with materials, tools, and what we know. This is a possible partnership, not a promise made to everyone.",
       close: "Each step is named once, when it fits. The rest is your call."
     },
     crystal: {
       title: "The Decision Crystal",
+      faceMarket: "Market",
+      faceMoney: "Money",
+      faceTeam: "Team",
+      faceTiming: "Timing",
+      faceImplementation: "Implementation",
+      facePersonal: "Personal cost",
+      plate: "Six faces. One dark, one cracked.",
       copy: "Every decision has six faces: market, money, team, timing, implementation, personal cost. A face that has not been tested stays dark. A tested face lights up. A cracked one shows where the decision does not hold. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step."
     },
     map: {
@@ -76,7 +84,8 @@ const strings = {
       caption: "Example map: a studio business deciding on a price change."
     },
     event: {
-      before: "September 26, 6 pm, Milpitas, Silicon Valley, our studio: an evening about decisions. To get an invitation, send DECISION by direct message on",
+      date: "September 26, 6 pm",
+      before: "Milpitas, Silicon Valley, our studio: an evening about decisions. To get an invitation, send DECISION by direct message on",
       or: "or",
       after: "."
     },
@@ -241,14 +250,22 @@ const strings = {
     ladder: {
       kicker: "Три ступени",
       title: "Лестница",
-      free: "$0. Первый шаг: проверка решения на этой странице и 30-минутная сессия. Вы увидите то, чего не видели, и решите, нужно ли идти дальше.",
-      test: "$250. Стресс-тест решения (Decision Stress Test): 2,5 часа личной работы над одним решением и письменная Карта решения после. Это не советы и не консультационные часы. Это ясность до обязательства: одно важное решение, проверенное с нескольких сторон, и карта того, что проверка показала. С ней можно работать уже на следующее утро.",
-      advisory: "$500 в месяц. Ведение в формате мастермайнда: четыре встречи по полтора часа, одно решение доводится до первого реального действия, между встречами задания и инструменты.",
+      perMonth: "в месяц",
+      free: "Первый шаг: проверка решения на этой странице и 30-минутная сессия. Вы увидите то, чего не видели, и решите, нужно ли идти дальше.",
+      test: "Стресс-тест решения (Decision Stress Test): 2,5 часа личной работы над одним решением и письменная Карта решения после. Это не советы и не консультационные часы. Это ясность до обязательства: одно важное решение, проверенное с нескольких сторон, и карта того, что проверка показала. С ней можно работать уже на следующее утро.",
+      advisory: "Ведение в формате мастермайнда: четыре встречи по полтора часа, одно решение доводится до первого реального действия, между встречами задания и инструменты.",
       partnership: "Если наша совместная работа вам подойдёт и мы увидим реальный потенциал в решении, мы сможем сопровождать следующий отрезок: материалами, инструментами и нашими знаниями. Это возможное партнёрство, не обещание для всех.",
       close: "Каждую ступень я называю один раз, когда она подходит. Дальше решаете вы."
     },
     crystal: {
       title: "Кристалл решения",
+      faceMarket: "Рынок",
+      faceMoney: "Деньги",
+      faceTeam: "Команда",
+      faceTiming: "Время",
+      faceImplementation: "Внедрение",
+      facePersonal: "Личная цена",
+      plate: "Шесть граней. Одна тёмная, одна треснувшая.",
       copy: "У любого решения шесть граней: рынок, деньги, команда, время, внедрение, личная цена. Пока грань не проверена, она тёмная. Проверенная светится. Треснувшая показывает, где решение не держится. Карта решения - это ваш кристалл после проверки: видно, какие грани выдержали и над какой стоит поработать до шага."
     },
     map: {
@@ -269,7 +286,8 @@ const strings = {
       caption: "Пример карты: студийный бизнес, решение о ценах."
     },
     event: {
-      before: "26 сентября, 18:00, Милпитас, Silicon Valley, наша студия: вечер о решениях. Чтобы получить приглашение, напишите DECISION в личные сообщения в",
+      date: "26 сентября, 18:00",
+      before: "Милпитас, Silicon Valley, наша студия: вечер о решениях. Чтобы получить приглашение, напишите DECISION в личные сообщения в",
       or: "или",
       after: "."
     },
