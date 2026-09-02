@@ -25,16 +25,24 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="preload" href="assets/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/literata-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/kraft-offers.css?v=14">
-    <script src="assets/kraft-offers.js?v=14" defer></script>
+    <link rel="stylesheet" href="assets/kraft-offers.css?v=17">
+    <script src="assets/kraft-offers.js?v=17" defer></script>
+    <script src="assets/cover.js?v=17" defer></script>
+    <script src="assets/press.js?v=17" defer></script>
     <!-- GoatCounter slot:
     Create a GoatCounter site, replace MYCODE with its code, and uncomment.
     <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     -->
   </head>
   <body class="dst-page">
+    <div class="cover" data-cover data-plate="assets/img/cover-wide.webp" data-plate-portrait="assets/img/cover-tall.webp">
+      <canvas aria-hidden="true"></canvas>
+      <p class="sr-only">Before you decide it. TriMind it.</p>
+      <button type="button" class="cover-button">TriMind it</button>
+    </div>
     <header class="site-header">
       <a class="wordmark" href="index.html">BEFORE YOU DECIDE</a>
+      <p class="running-head" data-running-head><span class="idx" data-head-index>01</span><span data-head-label></span></p>
       <nav class="top-nav" aria-label="Navigation">
         <a href="#test" data-i18n="nav.test">The test</a>
         <a href="#format" data-i18n="nav.format">Format</a>
@@ -42,28 +50,30 @@
         <a href="#check" data-i18n="nav.check">Decision Check</a>
       </nav>
       <a class="lang-switcher" href="?lang=ru" data-lang-switch>RU</a>
+      <span class="read-progress" aria-hidden="true" data-read-progress></span>
     </header>
+    <span class="reading-line" aria-hidden="true"></span>
 
     <main>
-      <section class="hero dst-hero">
+      <section class="hero dst-hero" data-head="test" data-index="01">
         <div class="hero-copy">
           <p class="kicker"><span class="idx" aria-hidden="true">01</span><span data-i18n="hero.kicker">Clarity comes through testing</span></p>
           <h1><span data-i18n="hero.title">Before you decide&nbsp;it.</span><span>TriMind it.</span></h1>
           <p class="lead" data-i18n="hero.lead">
-            Bring one real business decision - the one you are about to make, not one you are wondering about. We put it under pressure from several positions that disagree with each other, so the assumptions, the consequences, and the blind spots show before you act. The decision may hold. Then you know why.
+            Bring one real business decision: <mark class="ink">the one in front of you now</mark>. We look at it from several positions that disagree with each other, so the assumptions, the consequences, and the blind spots show before you act. The decision may hold. <mark class="ink">Then you know why.</mark>
           </p>
           <a class="primary-link" href="#check" data-i18n="hero.cta">Take the 3-minute Decision Check</a>
         </div>
-        <figure class="hero-plate">
+        <figure class="hero-plate plate" data-print="load">
           <img src="assets/img/game-board-hand.webp" alt="Business Mindset board game" data-i18n-alt="image.gameBoard" width="900" height="1301" fetchpriority="high">
         </figure>
       </section>
 
-      <section class="section proof-section" id="test">
+      <section class="section proof-section" id="test" data-head="test" data-index="01">
         <div>
           <h2 data-i18n="stakes.title">For owners with something real at stake</h2>
           <p data-i18n="stakes.copy">
-            This is for an owner in front of a move that costs something to make and something to undo: a pivot, a new direction, a key hire, a partner change, a pricing change, a new market, more money into an existing product, closing a line, automation with AI, or giving agents more autonomy. Not a hypothetical. The one on your desk.
+            This is for an owner in front of a move that costs something to make and something to undo: a pivot, a new direction, a key hire, a partner change, a pricing change, a new market, more money into an existing product, closing a line, automation with AI, or giving agents more autonomy. <mark class="ink">The one on your desk.</mark>
           </p>
         </div>
         <div class="founder-proof">
@@ -77,7 +87,7 @@
         </div>
       </section>
 
-      <section class="section leave-section" id="format">
+      <section class="section leave-section" id="format" data-head="format" data-index="02">
         <p class="kicker"><span class="idx" aria-hidden="true">02</span><span data-i18n="format.kicker">One decision, one map</span></p>
         <h2 data-i18n="format.title">What you leave with</h2>
         <div class="steps compact-steps">
@@ -87,17 +97,17 @@
           </article>
           <article>
             <h3><span class="idx" aria-hidden="true">02</span><span data-i18n="format.stressTitle">Stress points</span></h3>
-            <p data-i18n="format.stressCopy">Then we put the move under pressure from market, money, team, timing, implementation, and personal cost - and let them disagree. Where they disagree is where the assumptions live.</p>
+            <p data-i18n="format.stressCopy">Then we put the move under pressure from market, money, team, timing, implementation, and personal cost - and let them disagree. <mark class="ink">Where they disagree is where the assumptions live.</mark></p>
           </article>
           <article>
             <h3><span class="idx" aria-hidden="true">03</span><span data-i18n="format.mapTitle">Decision Map</span></h3>
-            <p data-i18n="format.mapCopy">You leave with a written map: the case for moving, the case for waiting, what must be checked before either, and the blind spots that changed the picture. Written in your words, so a month later it still reads as yours.</p>
+            <p data-i18n="format.mapCopy">You leave with a written map: the case for moving, the case for waiting, what must be checked before either, and the blind spots that changed the picture. <mark class="ink">Written in your words</mark>, so a month later it still reads as yours.</p>
           </article>
         </div>
       </section>
 
-      <section class="section crystal-section">
-        <figure class="crystal-figure">
+      <section class="section crystal-section" data-head="crystal" data-index="02">
+        <figure class="crystal-figure" data-crystal>
           <svg viewBox="0 0 400 400" role="img" aria-labelledby="crystal-title">
             <title id="crystal-title" data-i18n="image.crystal">The Decision Crystal: six faces</title>
             <defs>
@@ -105,17 +115,19 @@
               <pattern id="dots-35" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><circle cx="3" cy="3" r="1.45" fill="#123934"/></pattern>
               <pattern id="dots-60" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><circle cx="3" cy="3" r="2" fill="#123934"/></pattern>
             </defs>
-            <g stroke="#123934" stroke-width="1.5" stroke-linejoin="round">
-              <polygon points="200,30 347,115 259,166 200,132 141,166 53,115" fill="url(#dots-15)"/>
-              <polygon points="347,115 347,285 259,234 259,166" fill="url(#dots-35)"/>
-              <polygon points="347,285 200,370 200,268 259,234" fill="url(#dots-15)"/>
-              <polygon points="200,370 53,285 141,234 200,268" fill="url(#dots-35)"/>
-              <polygon points="53,285 53,115 141,166 141,234" fill="url(#dots-60)"/>
-              <polygon points="200,132 259,166 259,234 200,268 141,234 141,166" fill="#123934"/>
+            <g class="faces" stroke="#123934" stroke-width="1.5" stroke-linejoin="round">
+              <polygon class="face" style="--i: 0" points="200,30 347,115 259,166 200,132 141,166 53,115" fill="url(#dots-15)"/>
+              <polygon class="face" style="--i: 1" points="347,115 347,285 259,234 259,166" fill="url(#dots-35)"/>
+              <polygon class="face" style="--i: 2" points="347,285 200,370 200,268 259,234" fill="url(#dots-15)"/>
+              <polygon class="face" style="--i: 3" points="200,370 53,285 141,234 200,268" fill="url(#dots-35)"/>
+              <polygon class="face" style="--i: 4" points="53,285 53,115 141,166 141,234" fill="url(#dots-60)"/>
+              <polygon class="face face-dark" style="--i: 5" points="200,132 259,166 259,234 200,268 141,234 141,166" fill="#123934"/>
             </g>
-            <polyline points="62,150 96,176 84,203 118,222 106,252 132,276" fill="none" stroke="#8f3434" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="96,176 122,170" fill="none" stroke="#8f3434" stroke-width="1.6" stroke-linecap="round"/>
-            <polyline points="118,222 104,236" fill="none" stroke="#8f3434" stroke-width="1.6" stroke-linecap="round"/>
+            <g class="crack" fill="none" stroke="#8f3434" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="62,150 96,176 84,203 118,222 106,252 132,276" stroke-width="2.4" pathLength="1"/>
+              <polyline points="96,176 122,170" stroke-width="1.6" pathLength="1"/>
+              <polyline points="118,222 104,236" stroke-width="1.6" pathLength="1"/>
+            </g>
             <text class="face-label" x="200" y="96" text-anchor="middle" data-i18n="crystal.faceMarket">Market</text>
             <text class="face-label" x="312" y="203" text-anchor="middle" data-i18n="crystal.faceTeam">Team</text>
             <text class="face-label" x="260" y="322" text-anchor="middle" data-i18n="crystal.facePersonal">Personal cost</text>
@@ -128,26 +140,26 @@
         <div>
           <h2 data-i18n="crystal.title">The Decision Crystal</h2>
           <p data-i18n="crystal.copy">
-            Every decision has six faces: market, money, team, timing, implementation, personal cost. A face that has not been tested stays dark. A tested face lights up. A cracked one shows where the decision does not hold. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step.
+            Every decision has six faces: market, money, team, timing, implementation, personal cost. A face that has not been tested stays dark. <mark class="ink">A tested face lights up.</mark> A cracked one shows where the decision does not hold. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step.
           </p>
         </div>
       </section>
 
-      <section class="section format-section">
+      <section class="section format-section" data-head="format" data-index="02">
         <h2 data-i18n="session.title">Format</h2>
         <p data-i18n="session.copy">
           You fill in a short form and come to a 30-minute session. There we look at your question from several angles, and you decide whether to go deeper or whether it is already clear. I work online, one on one. Sometimes in groups. In person in California: during the upcoming trip and at our studio evening.
         </p>
       </section>
 
-      <section class="section price-section ladder-section">
+      <section class="section price-section ladder-section" data-head="ladder" data-index="03">
         <div>
           <p class="kicker"><span class="idx" aria-hidden="true">03</span><span data-i18n="ladder.kicker">The ladder</span></p>
           <h2 data-i18n="ladder.title">Ladder</h2>
         </div>
         <div class="ladder-list">
           <div class="ladder-row"><span class="ladder-price">$0</span><p data-i18n="ladder.free">The first step: the Decision Check on this page and a 30-minute session. You see what you had not seen and decide whether to go further.</p></div>
-          <div class="ladder-row"><span class="ladder-price">$250</span><p data-i18n="ladder.test">Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. Not advice, not consulting hours. Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. Usable the next morning.</p></div>
+          <div class="ladder-row"><span class="ladder-price">$250</span><p data-i18n="ladder.test">Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. <mark class="ink">Not advice, not consulting hours.</mark> Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. <mark class="ink">Usable the next morning.</mark></p></div>
           <div class="ladder-row"><span class="ladder-price">$500<small data-i18n="ladder.perMonth">a month</small></span><p data-i18n="ladder.advisory">Advisory in a mastermind format: four sessions of ninety minutes, one decision carried to its first real action, with homework and tools between sessions.</p></div>
           <p class="ladder-partnership" data-i18n="ladder.partnership">If our work together fits and we see real potential in the decision, we can support the next stretch with materials, tools, and what we know. This is a possible partnership, not a promise made to everyone.</p>
           <p data-i18n="ladder.close">Each step is named once, when it fits. The rest is your call.</p>
@@ -160,11 +172,11 @@
             <span data-i18n="event.or">or</span>
             <a href="https://www.linkedin.com/in/alesia-yuzhakov/" target="_blank" rel="noopener">LinkedIn</a><span data-i18n="event.after">.</span>
           </p>
-          <img class="event-photo" src="assets/img/event-studio.webp" alt="Studio event room" data-i18n-alt="image.event" width="900" height="506" loading="lazy">
+          <span class="plate event-plate" data-print="scroll"><img class="event-photo" src="assets/img/event-studio.webp" alt="Studio event room" data-i18n-alt="image.event" width="900" height="506" loading="lazy"></span>
         </div>
       </section>
 
-      <section class="section map-section">
+      <section class="section map-section" data-head="map" data-index="03">
         <h2 data-i18n="map.title">What a Decision Map looks like</h2>
         <article class="sample-map">
           <p class="map-eyebrow"><span data-i18n="map.label">DECISION MAP</span><span class="map-eyebrow-label" aria-hidden="true">PL. 02</span></p>
@@ -196,16 +208,16 @@
         <p class="map-caption" data-i18n="map.caption">Example map: a studio business deciding on a price change.</p>
       </section>
 
-      <section class="section about-section" id="about">
+      <section class="section about-section" id="about" data-head="about" data-index="04">
         <h2 data-i18n="about.title">WHO IS BEHIND THIS</h2>
         <div class="about-intro">
-          <img class="founder-photo" src="assets/img/portrait.webp" alt="Alesia Yuzhakov" data-i18n-alt="image.portrait" width="560" height="841" loading="lazy">
+          <span class="plate portrait-plate" data-print="scroll"><img class="founder-photo" src="assets/img/portrait.webp" alt="Alesia Yuzhakov" data-i18n-alt="image.portrait" width="560" height="841" loading="lazy"></span>
           <p data-i18n="about.intro">
             Alesia Yuzhakov, host and author. Sixteen years in small business, the last two in AI technology. Co-founder of AI TriMind.
           </p>
         </div>
         <p data-i18n="about.copy1">
-          I have made a lot of decisions in my career. The hard part was never the decision itself. It was deciding without knowing what to expect, and then fixing what I could not have seen. Technology has changed that: today you can walk the possible scenarios before you commit. That is what we build.
+          I have made a lot of decisions in my career. The hard part was never the decision itself. It was deciding without knowing what to expect, and then fixing what I could not have seen. Technology has changed that: today you can walk the possible scenarios before you commit. <mark class="ink">That is what we build.</mark>
         </p>
         <p data-i18n="about.copy2">
           For three and a half years I ran a photo and video studio and event venue in Sunnyvale, Silicon Valley, with 15 to 20 events a month. That former studio is where I wrote the first Business Mindset board game - so that owners would sit at one table and talk about their real businesses, not their plans. I ran it in person, one on one and in groups, set up production of the printed game in the United States, and nearly the whole print run sold. The small business owner meetups I have run since grew into a circle of founders in the Valley who keep coming back with their next decision. Several changed direction after those sessions and told me so.
@@ -214,7 +226,7 @@
           Then I went looking for a technical partner and found a team. AI TriMind is now a technology company. The Business Mindset game has been digitized, and the TriMind app is in development: decision scenarios, daily practices, and sprints. Behind it stands a serious engineering team and an agent system of our own.
         </p>
         <p data-i18n="about.copy4">
-          The Decision Stress Test is the same method, run live, with me.
+          The Decision Stress Test is the same method, <mark class="ink">run live, with me</mark>.
         </p>
         <p class="about-link">
           <a href="https://www.linkedin.com/in/alesia-yuzhakov/" target="_blank" rel="noopener" data-i18n="about.linkedin">Alesia on LinkedIn</a>
@@ -226,12 +238,13 @@
         -->
       </section>
 
-      <section class="section check-section" id="check">
+      <section class="section check-section" id="check" data-head="check" data-index="05">
         <h2 data-i18n="check.title">If this one feels too important to get wrong</h2>
         <p data-i18n="check.intro">
-          A few taps, one decision. You get its type, the one blind spot most often unlooked-at in decisions like it, and the door to a call. Your answers stay in your browser; we count only how many people finish.
+          A few taps, one decision. You get its type, the one blind spot most often unlooked-at in decisions like it, and the door to a call. <mark class="ink">Your answers stay in your browser</mark>; we count only how many people finish.
         </p>
         <form class="decision-check" data-decision-check data-calendly-url="https://calendly.com/trmnd-ai/decision-call">
+          <p class="step-head" data-step-head hidden><span class="idx" data-step-index>Q1</span><span data-step-label></span><span class="step-track" aria-hidden="true"><span data-step-fill></span></span></p>
           <fieldset>
             <legend data-i18n="q.business">Do you run a business today?</legend>
             <label class="choice"><input type="radio" name="business" value="Yes" required><span data-i18n="option.yes">Yes</span></label>
@@ -288,7 +301,11 @@
             <label class="choice"><input type="radio" name="deadline" value="No"><span data-i18n="option.no">No</span></label>
           </fieldset>
 
-          <button class="copy-button" type="submit" data-i18n="check.submit">Show my result</button>
+          <p class="step-nav" data-step-nav hidden>
+            <button class="secondary-link" type="button" data-step-back></button>
+            <button class="copy-button" type="button" data-step-next></button>
+          </p>
+          <button class="copy-button" type="submit" data-i18n="check.submit" data-step-submit>Show my result</button>
         </form>
 
         <article class="decision-result" data-decision-result hidden>
@@ -322,7 +339,7 @@
         </a>
       </section>
 
-      <section class="section faq-section" id="faq">
+      <section class="section faq-section" id="faq" data-head="faq" data-index="06">
         <h2 data-i18n="faq.title">Questions</h2>
         <div class="faq-list">
           <details>

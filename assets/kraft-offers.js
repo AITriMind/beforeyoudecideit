@@ -14,15 +14,31 @@ const strings = {
       check: "Decision Check"
     },
     switchTo: "RU",
+    head: {
+      test: "The test",
+      format: "What you leave with",
+      crystal: "The crystal",
+      ladder: "The ladder",
+      map: "Decision map",
+      about: "Who is behind this",
+      check: "Decision check",
+      faq: "Questions"
+    },
+    steps: {
+      question: "Question",
+      of: "of",
+      next: "Next",
+      back: "Back"
+    },
     hero: {
       title: "Before you decide\u00a0it.",
       kicker: "Clarity comes through testing",
-      lead: "Bring one real business decision: the one in front of you now. We look at it from several positions that disagree with each other, so the assumptions, the consequences, and the blind spots show before you act. The decision may hold. Then you know why.",
+      lead: "Bring one real business decision: [[the one in front of you now]]. We look at it from several positions that disagree with each other, so the assumptions, the consequences, and the blind spots show before you act. The decision may hold. [[Then you know why.]]",
       cta: "Take the 3-minute Decision Check"
     },
     stakes: {
       title: "For owners with something real at stake",
-      copy: "This is for an owner in front of a move that changes a lot for a long time: a pivot, a new direction, a key hire, a partner change, a pricing change, a new market, more money into an existing product, closing a line, automation with AI, or giving agents more autonomy. The one on your desk."
+      copy: "This is for an owner in front of a move that changes a lot for a long time: a pivot, a new direction, a key hire, a partner change, a pricing change, a new market, more money into an existing product, closing a line, automation with AI, or giving agents more autonomy. [[The one on your desk.]]"
     },
     proof: {
       person: "Alesia Yuzhakov, who leads the Decision Stress Test",
@@ -37,9 +53,9 @@ const strings = {
       frameTitle: "Decision frame",
       frameCopy: "First we make the decision specific enough to be tested: what exactly is being decided, why now and not later, and what it commits you to once it is made. Many decisions change shape at this step alone.",
       stressTitle: "Stress points",
-      stressCopy: "Then we put the move under pressure from market, money, team, timing, implementation, and personal cost - and let them disagree. Where they disagree is where the assumptions live.",
+      stressCopy: "Then we put the move under pressure from market, money, team, timing, implementation, and personal cost - and let them disagree. [[Where they disagree is where the assumptions live.]]",
       mapTitle: "Decision Map",
-      mapCopy: "You leave with a written map: the case for moving, the case for waiting, what must be checked before either, and the blind spots that changed the picture. Written in your words, so a month later it still reads as yours."
+      mapCopy: "You leave with a written map: the case for moving, the case for waiting, what must be checked before either, and the blind spots that changed the picture. [[Written in your words]], so a month later it still reads as yours."
     },
     session: {
       title: "Format",
@@ -50,7 +66,7 @@ const strings = {
       title: "Ladder",
       perMonth: "a month",
       free: "The first step: the Decision Check on this page and a 30-minute session. You see what you had not seen and decide whether to go further.",
-      test: "Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. Not advice, not consulting hours. Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. Usable the next morning.",
+      test: "Decision Stress Test: 2.5 hours of personal work on one decision and a written Decision Map after it. [[Not advice, not consulting hours.]] Clarity before commitment: one consequential decision, tested from several sides, and a map of what the test showed. [[Usable the next morning.]]",
       advisory: "Advisory in a mastermind format: four sessions of ninety minutes, one decision carried to its first real action, with homework and tools between sessions.",
       partnership: "If our work together fits and we see real potential in the decision, we can support the next stretch with materials, tools, and what we know. This is a possible partnership, not a promise made to everyone.",
       close: "Each step is named once, when it fits. The rest is your call."
@@ -64,7 +80,7 @@ const strings = {
       faceImplementation: "Implementation",
       facePersonal: "Personal cost",
       plate: "Six faces. One dark, one cracked.",
-      copy: "Every decision has six faces: market, money, team, timing, implementation, personal cost. A face that has not been tested stays dark. A tested face lights up. A cracked one shows where the decision does not hold. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step."
+      copy: "Every decision has six faces: market, money, team, timing, implementation, personal cost. A face that has not been tested stays dark. [[A tested face lights up.]] A cracked one shows where the decision does not hold. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step."
     },
     map: {
       title: "What a Decision Map looks like",
@@ -92,15 +108,15 @@ const strings = {
     about: {
       title: "WHO IS BEHIND THIS",
       intro: "Alesia Yuzhakov, host and author. Sixteen years in small business, the last two in AI technology. Co-founder of AI TriMind.",
-      copy1: "I have made a lot of decisions in my career. The hard part was never the decision itself. It was deciding without knowing what to expect, and then fixing what I could not have seen. Technology has changed that: today you can walk the possible scenarios before you commit. That is what we build.",
+      copy1: "I have made a lot of decisions in my career. The hard part was never the decision itself. It was deciding without knowing what to expect, and then fixing what I could not have seen. Technology has changed that: today you can walk the possible scenarios before you commit. [[That is what we build.]]",
       copy2: "For three and a half years I ran a photo and video studio and an event venue in Sunnyvale, Silicon Valley, with 15 to 20 events a month. That former studio is where I wrote the first Business Mindset board game - so that owners would sit at one table and talk about their real businesses, not their plans. I ran it in person, one on one and in groups, set up production of the printed game in the United States, and nearly the whole print run sold. The small business owner meetups I have run since grew into a circle of founders in the Valley who keep coming back with their next decision. Several changed direction after those sessions and told me so.",
       copy3: "Then I went looking for a technical partner and found a team. AI TriMind is now a technology company. The Business Mindset game has been digitized, and the TriMind app is in development: decision scenarios, daily practices, and sprints. Behind it stands a serious engineering team and an agent system of our own.",
-      copy4: "The Decision Stress Test is the same method, run live, with me.",
+      copy4: "The Decision Stress Test is the same method, [[run live, with me]].",
       linkedin: "Alesia on LinkedIn"
     },
     check: {
       title: "If this decision deserves a second look",
-      intro: "A few taps, one decision. You get its type, the one blind spot most often unlooked-at in decisions like it, and the door to a call. Your answers stay in your browser; we count only how many people finish. If you send the result to yourself, we will see your email; nothing else.",
+      intro: "A few taps, one decision. You get its type, the one blind spot most often unlooked-at in decisions like it, and the door to a call. [[Your answers stay in your browser]]; we count only how many people finish. If you send the result to yourself, we will see your email; nothing else.",
       submit: "Show my result"
     },
     email: {
@@ -216,15 +232,31 @@ const strings = {
       check: "Проверка решения"
     },
     switchTo: "EN",
+    head: {
+      test: "Тест",
+      format: "С чем вы уходите",
+      crystal: "Кристалл",
+      ladder: "Лестница",
+      map: "Карта решения",
+      about: "Кто за этим",
+      check: "Проверка решения",
+      faq: "Вопросы"
+    },
+    steps: {
+      question: "Вопрос",
+      of: "из",
+      next: "Дальше",
+      back: "Назад"
+    },
     hero: {
       title: "Прежде чем решить, проверьте.",
       kicker: "Ясность приходит через проверку",
-      lead: "Принесите одно настоящее бизнес-решение: то, которое сейчас перед вами. Мы посмотрим на него с нескольких позиций, которые не согласны друг с другом, и то, чего вы не видите, станет видно до того, как вы сделаете шаг. Решение может выдержать проверку. Тогда вы будете знать, почему.",
+      lead: "Принесите одно настоящее бизнес-решение: [[то, которое сейчас перед вами]]. Мы посмотрим на него с нескольких позиций, которые не согласны друг с другом, и то, чего вы не видите, станет видно до того, как вы сделаете шаг. Решение может выдержать проверку. [[Тогда вы будете знать, почему.]]",
       cta: "Пройти проверку решения, 3 минуты"
     },
     stakes: {
       title: "Для владельцев, у кого на кону настоящее",
-      copy: "Это для владельца бизнеса, который стоит перед шагом, меняющим многое надолго: разворот, новое направление, ключевой найм, смена партнёра, смена цен, новый рынок, ещё деньги в существующий продукт, закрытие направления, автоматизация с ИИ, больше самостоятельности ИИ-агентам. Не гипотетически. То, что лежит у вас на столе."
+      copy: "Это для владельца бизнеса, который стоит перед шагом, меняющим многое надолго: разворот, новое направление, ключевой найм, смена партнёра, смена цен, новый рынок, ещё деньги в существующий продукт, закрытие направления, автоматизация с ИИ, больше самостоятельности ИИ-агентам. Не гипотетически. [[То, что лежит у вас на столе.]]"
     },
     proof: {
       person: "Алеся Южаков, ведущая стресс-теста решения",
@@ -239,9 +271,9 @@ const strings = {
       frameTitle: "Рамка решения",
       frameCopy: "Сначала мы делаем решение достаточно конкретным, чтобы его можно было проверить: что именно решается, почему сейчас, а не позже, и к чему оно вас обяжет, когда будет принято. Многие решения меняют форму уже на этом шаге.",
       stressTitle: "Точки напряжения",
-      stressCopy: "Потом мы смотрим на шаг глазами рынка, денег, команды, времени, внедрения и вашей личной цены, и даём этим позициям спорить. Там, где они расходятся, живут допущения.",
+      stressCopy: "Потом мы смотрим на шаг глазами рынка, денег, команды, времени, внедрения и вашей личной цены, и даём этим позициям спорить. [[Там, где они расходятся, живут допущения.]]",
       mapTitle: "Карта решения",
-      mapCopy: "Вы уходите с письменной картой: доводы за шаг, доводы за паузу, что нужно проверить до того и другого, и то, чего вы не видели и что изменило картину. Написана вашими словами, чтобы через месяц она всё ещё читалась как ваша."
+      mapCopy: "Вы уходите с письменной картой: доводы за шаг, доводы за паузу, что нужно проверить до того и другого, и то, чего вы не видели и что изменило картину. [[Написана вашими словами]], чтобы через месяц она всё ещё читалась как ваша."
     },
     session: {
       title: "Формат",
@@ -252,7 +284,7 @@ const strings = {
       title: "Лестница",
       perMonth: "в месяц",
       free: "Первый шаг: проверка решения на этой странице и 30-минутная сессия. Вы увидите то, чего не видели, и решите, нужно ли идти дальше.",
-      test: "Стресс-тест решения (Decision Stress Test): 2,5 часа личной работы над одним решением и письменная Карта решения после. Это не советы и не консультационные часы. Это ясность до обязательства: одно важное решение, проверенное с нескольких сторон, и карта того, что проверка показала. С ней можно работать уже на следующее утро.",
+      test: "Стресс-тест решения (Decision Stress Test): 2,5 часа личной работы над одним решением и письменная Карта решения после. [[Это не советы и не консультационные часы.]] Это ясность до обязательства: одно важное решение, проверенное с нескольких сторон, и карта того, что проверка показала. [[С ней можно работать уже на следующее утро.]]",
       advisory: "Ведение в формате мастермайнда: четыре встречи по полтора часа, одно решение доводится до первого реального действия, между встречами задания и инструменты.",
       partnership: "Если наша совместная работа вам подойдёт и мы увидим реальный потенциал в решении, мы сможем сопровождать следующий отрезок: материалами, инструментами и нашими знаниями. Это возможное партнёрство, не обещание для всех.",
       close: "Каждую ступень я называю один раз, когда она подходит. Дальше решаете вы."
@@ -266,7 +298,7 @@ const strings = {
       faceImplementation: "Внедрение",
       facePersonal: "Личная цена",
       plate: "Шесть граней. Одна тёмная, одна треснувшая.",
-      copy: "У любого решения шесть граней: рынок, деньги, команда, время, внедрение, личная цена. Пока грань не проверена, она тёмная. Проверенная светится. Треснувшая показывает, где решение не держится. Карта решения - это ваш кристалл после проверки: видно, какие грани выдержали и над какой стоит поработать до шага."
+      copy: "У любого решения шесть граней: рынок, деньги, команда, время, внедрение, личная цена. Пока грань не проверена, она тёмная. [[Проверенная светится.]] Треснувшая показывает, где решение не держится. Карта решения - это ваш кристалл после проверки: видно, какие грани выдержали и над какой стоит поработать до шага."
     },
     map: {
       title: "Так выглядит Карта решения",
@@ -294,15 +326,15 @@ const strings = {
     about: {
       title: "Кто за этим",
       intro: "Алеся Южаков, ведущая и автор. Шестнадцать лет в малом бизнесе, последние два в ИИ-технологиях. Сооснователь AI TriMind.",
-      copy1: "Я приняла много решений за свою карьеру. Трудным никогда не было само решение. Трудно было решать, не зная, чего ждать, а потом чинить то, чего не могла увидеть заранее. Технологии это изменили: сегодня возможные сценарии можно пройти до того, как вы сделаете шаг. Это мы и строим.",
+      copy1: "Я приняла много решений за свою карьеру. Трудным никогда не было само решение. Трудно было решать, не зная, чего ждать, а потом чинить то, чего не могла увидеть заранее. Технологии это изменили: сегодня возможные сценарии можно пройти до того, как вы сделаете шаг. [[Это мы и строим.]]",
       copy2: "Три с половиной года я вела фото- и видеостудию и площадку для мероприятий в Саннивейл, Кремниевая долина, по 15-20 событий в месяц. В той прежней студии я написала первую настольную игру «Бизнес Менталитет», чтобы владельцы сели за один стол и говорили о своих настоящих бизнесах, а не о планах. Я вела её вживую, один на один и в группах, наладила производство печатной игры в США, и почти весь тираж разошёлся. Встречи владельцев малого бизнеса, которые я веду с тех пор, выросли в круг основателей в Долине, и они возвращаются со следующим решением. Несколько из них сменили направление после тех сессий и сказали мне об этом.",
       copy3: "Потом я пошла искать технического партнёра и нашла команду. AI TriMind сегодня технологическая компания. Игра «Бизнес Менталитет» оцифрована, и приложение TriMind сейчас в разработке: сценарии решений, ежедневные практики и спринты. За ним стоит серьёзная инженерная команда и наша собственная система агентов.",
-      copy4: "Стресс-тест решения: тот же метод, вживую, со мной.",
+      copy4: "Стресс-тест решения: тот же метод, [[вживую, со мной]].",
       linkedin: "Алеся в LinkedIn"
     },
     check: {
       title: "Если это решение стоит того, чтобы посмотреть на него ещё раз",
-      intro: "Несколько нажатий, одно решение. Вы получите его тип, одну вещь, которую в таких решениях чаще всего не видят, и дверь на 30-минутную сессию. Ответы остаются в вашем браузере; мы считаем только, сколько людей дошли до конца. Если вы отправите результат себе, мы увидим ваш email; больше ничего.",
+      intro: "Несколько нажатий, одно решение. Вы получите его тип, одну вещь, которую в таких решениях чаще всего не видят, и дверь на 30-минутную сессию. [[Ответы остаются в вашем браузере]]; мы считаем только, сколько людей дошли до конца. Если вы отправите результат себе, мы увидим ваш email; больше ничего.",
       submit: "Показать результат"
     },
     email: {
@@ -482,6 +514,26 @@ function setSwitchLink(lang) {
   switcher.dataset.nextLang = nextLang;
 }
 
+function renderCopy(element, value) {
+  if (!value.includes("[[")) {
+    element.textContent = value;
+    return;
+  }
+  element.textContent = "";
+  const parts = value.split(/\[\[|\]\]/);
+  parts.forEach((part, index) => {
+    if (!part) return;
+    if (index % 2 === 1) {
+      const mark = document.createElement("mark");
+      mark.className = "ink";
+      mark.textContent = part;
+      element.appendChild(mark);
+    } else {
+      element.appendChild(document.createTextNode(part));
+    }
+  });
+}
+
 function setLanguage(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
@@ -498,7 +550,7 @@ function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const value = getNestedValue(strings[lang], element.dataset.i18n);
     if (typeof value === "string") {
-      element.textContent = value;
+      renderCopy(element, value);
     }
   });
 
@@ -511,7 +563,10 @@ function setLanguage(lang) {
 
   setSwitchLink(lang);
   refreshVisibleResult();
+  document.dispatchEvent(new CustomEvent("bydi:language", { detail: { lang, strings: strings[lang] } }));
 }
+
+window.bydiStrings = () => strings[currentLang];
 
 function updateMeta(attribute, key, content) {
   const element = document.querySelector(`meta[${attribute}='${key}']`);
