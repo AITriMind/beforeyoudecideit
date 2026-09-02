@@ -888,14 +888,14 @@ h3 {
     align-items: start;
   }
 
-  .section .event-note {
-    font-size: 11px;
-    line-height: 1.25;
-    white-space: nowrap;
+  .event-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
   }
 
   .event-photo {
-    max-width: 14rem;
+    width: 14rem;
+    aspect-ratio: 16 / 9;
   }
 
   .copy-button,
