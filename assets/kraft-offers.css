@@ -667,9 +667,13 @@ mark.ink {
   }
 }
 
-.event-plate {
+.event-plate-figure {
   width: 100%;
   max-width: 22rem;
+}
+
+.event-plate {
+  width: 100%;
   aspect-ratio: 16 / 9;
 }
 
@@ -679,8 +683,12 @@ mark.ink {
   max-width: none;
 }
 
-.portrait-plate {
+.portrait-plate-figure {
   width: min(100%, 15rem);
+}
+
+.portrait-plate {
+  width: 100%;
   aspect-ratio: 2 / 3;
 }
 
@@ -712,6 +720,9 @@ mark.ink {
 .proof-plate {
   margin: 0;
   width: min(100%, 20rem);
+}
+
+.proof-plate .plate-frame {
   aspect-ratio: 4 / 5;
 }
 
@@ -878,13 +889,80 @@ mark.ink {
   }
 }
 
-.plate-caption {
-  display: flex;
+/* ---------- TM-07 evidence plates ----------
+   One role per visual: a test, a piece of evidence, or a finding. The header
+   names it, the caption stays in the document, and nothing depends on hover. */
+
+.plate-figure {
+  display: grid;
   gap: 0.5rem;
-  margin: 0.6rem 0 0;
+  margin: 0;
+}
+
+.plate-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: baseline;
+  margin: 0;
+  padding-bottom: 0.4rem;
+  border-bottom: var(--rule);
+  font-family: var(--tm-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--tm-ink-muted);
+}
+
+.plate-role {
+  color: var(--tm-ink);
+}
+
+[data-plate-role="finding"] .plate-role {
+  color: var(--tm-accent);
+}
+
+.plate-title {
+  flex: 1 1 12rem;
+  color: var(--tm-ink);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.plate-frame {
+  display: block;
+  overflow: hidden;
+}
+
+.plate-caption {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
   padding-top: 0.5rem;
   border-top: var(--rule);
-  color: var(--ink-80);
+  font-family: var(--tm-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+  text-transform: none;
+  color: var(--tm-ink-80, var(--ink-80));
+}
+
+.plate-source {
+  color: var(--tm-ink-muted);
+}
+
+/* a finding never rests on colour: it is labelled */
+.result-finding h4::before {
+  content: attr(data-finding-label);
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--tm-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tm-ink-muted);
 }
 
 /* ---------- ladder: ruled information strip ---------- */

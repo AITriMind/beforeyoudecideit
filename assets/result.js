@@ -81,6 +81,9 @@ if (result && form) {
         block.className = 'result-finding';
         block.dataset.findingCode = finding.code;
         const title = document.createElement('h4');
+        // the label carries the severity in words; red alone never does
+        title.dataset.findingLabel =
+          finding.priority === 1 ? lookup(s, 'plate.riskLabel') : lookup(s, 'plate.roleFinding');
         title.textContent = lookup(s, finding.titleKey);
         const body = document.createElement('p');
         body.textContent = lookup(s, finding.bodyKey);
