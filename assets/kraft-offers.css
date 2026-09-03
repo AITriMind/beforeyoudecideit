@@ -79,17 +79,71 @@
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
+/* TM-01 tokens. The --tm-* layer is the normative source (spec S2.1); the
+   site's own names alias onto it so one edit moves every rule. Fonts bind to
+   the licensed families already loaded above, per the A-06 binding rule. */
 :root {
-  --paper: #f5f1e8;
-  --ink: #123934;
+  --site-display-font: "Literata", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  --site-body-font: "IBM Plex Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --site-mono-font: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --tm-paper: #f3eee2;
+  --tm-paper-strong: #e6dece;
+  --tm-surface: #fffaf0;
+
+  --tm-ink: #123c34;
+  --tm-ink-muted: #5e6c65;
+  --tm-accent: #9b3d47;
+  --tm-accent-soft: #ead7d9;
+  --tm-rule: #aaa392;
+
+  --tm-focus: #9b3d47;
+
+  --tm-space-1: 4px;
+  --tm-space-2: 8px;
+  --tm-space-3: 12px;
+  --tm-space-4: 16px;
+  --tm-space-5: 24px;
+  --tm-space-6: 32px;
+  --tm-space-7: 48px;
+  --tm-space-8: 64px;
+  --tm-space-9: 96px;
+  --tm-space-10: 128px;
+
+  --tm-radius-control: 0px;
+  --tm-rule-width: 1px;
+
+  --tm-font-display: var(--site-display-font, Georgia, "Times New Roman", serif);
+  --tm-font-body: var(--site-body-font, Georgia, "Times New Roman", serif);
+  --tm-font-mono: var(--site-mono-font, "Courier New", Courier, monospace);
+
+  --tm-type-xs: clamp(0.6875rem, 0.65rem + 0.08vw, 0.75rem);
+  --tm-type-sm: clamp(0.8125rem, 0.77rem + 0.12vw, 0.875rem);
+  --tm-type-body: clamp(1rem, 0.93rem + 0.20vw, 1.125rem);
+  --tm-type-h3: clamp(1.5rem, 1.25rem + 0.80vw, 2.25rem);
+  --tm-type-h2: clamp(2.25rem, 1.70rem + 2.10vw, 4.5rem);
+  --tm-type-hero: clamp(3.25rem, 2.00rem + 5.00vw, 8rem);
+
+  --tm-leading-tight: 0.92;
+  --tm-leading-heading: 1.0;
+  --tm-leading-body: 1.45;
+
+  --tm-motion-fast: 120ms;
+  --tm-motion-base: 180ms;
+  --tm-motion-state: 240ms;
+  --tm-ease-state: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* site aliases */
+  --paper: var(--tm-paper);
+  --ink: var(--tm-ink);
   --ink-80: color-mix(in srgb, var(--ink) 80%, var(--paper));
   --ink-60: color-mix(in srgb, var(--ink) 60%, var(--paper));
   --ink-35: color-mix(in srgb, var(--ink) 35%, var(--paper));
   --ink-18: color-mix(in srgb, var(--ink) 18%, var(--paper));
-  --accent: #8f3434;
-  --serif: "Literata", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
-  --sans: "IBM Plex Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --accent: var(--tm-accent);
+  --serif: var(--tm-font-display);
+  --sans: var(--tm-font-body);
+  --mono: var(--tm-font-mono);
   --rule: 1px solid var(--ink-35);
   --rule-strong: 2px solid var(--ink);
   --gutter: 1.25rem;

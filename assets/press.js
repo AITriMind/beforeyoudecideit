@@ -80,8 +80,10 @@
       for (const pl of plates) {
         const r = pl.el.getBoundingClientRect();
         if (r.height === 0) continue;
-        // prints from its top edge as it crosses the line, over its own height
-        const p = clamp((lineY + r.height * 0.35 - r.top) / (r.height * 0.95), 0, 1);
+        // starts as the plate enters from below the line, finishes once its top
+        // has passed the line — fully printed while it is still in the reading zone
+        const lead = vh * 0.28;
+        const p = clamp((lineY + lead - r.top) / (lead + r.height * 0.3), 0, 1);
         if (Math.abs(p - pl.p) > 0.004) {
           pl.p = p;
           pl.el.style.setProperty("--p", p.toFixed(3));

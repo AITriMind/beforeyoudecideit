@@ -6,9 +6,9 @@
   const root = document.querySelector("[data-cover]");
   if (!root) return;
 
-  const PAPER = "#f5f1e8";
-  const INK = "#123934";
-  const ACCENT = "#8f3434";
+  const PAPER = "#f3eee2";
+  const INK = "#123c34";
+  const ACCENT = "#9b3d47";
   const SEEN_KEY = "bydi-cover";
 
   let seen = false;
