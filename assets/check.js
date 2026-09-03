@@ -11,15 +11,16 @@
  * still shows six untested faces and the check still works.
  */
 
-import { FACE_IDS } from './domain/decision.js?v=26';
-import { applyCrystalStates } from './domain/crystal.js?v=26';
-import { QUESTION_BY_INPUT_NAME, categoryFor, optionIdFor } from './domain/check-config.js?v=26';
-import { derive } from './domain/derive.js?v=26';
+import { FACE_IDS } from './domain/decision.js?v=27';
+import { applyCrystalStates } from './domain/crystal.js?v=27';
+import { QUESTION_BY_INPUT_NAME, categoryFor, optionIdFor } from './domain/check-config.js?v=27';
+import { derive } from './domain/derive.js?v=27';
 
 const form = document.querySelector('[data-decision-check]');
-const crystal = document.querySelector('[data-wizard-crystal] .tm-crystal');
 const legend = document.querySelector('[data-face-legend]');
-if (form && crystal) {
+// the wizard crystal is injected after first paint, so it is looked up on use
+const findCrystal = () => document.querySelector('[data-wizard-crystal] .tm-crystal');
+if (form) {
   const state = { derived: null, selected: [] };
 
   /** Selected option ids, read from the DOM the owner authored. */
@@ -59,7 +60,7 @@ if (form && crystal) {
   function update() {
     state.selected = selectedOptionIds();
     state.derived = derive(state.selected);
-    applyCrystalStates(crystal, state.derived.faceStates);
+    applyCrystalStates(findCrystal(), state.derived.faceStates);
     renderLegend();
     // the result surface reads this; nothing is persisted and nothing is sent
     form.dataset.category = categoryFor(state.selected);
@@ -70,5 +71,6 @@ if (form && crystal) {
 
   form.addEventListener('change', update);
   document.addEventListener('bydi:language', renderLegend);
+  document.addEventListener('bydi:crystals-ready', update);
   update();
 }

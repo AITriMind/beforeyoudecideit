@@ -10,7 +10,7 @@
  * carries real material and the owner's consent flags say so.
  */
 
-import { FACE_IDS } from './decision.js?v=26';
+import { FACE_IDS } from './decision.js?v=27';
 
 /** @typedef {'draft'|'review'|'published'|'archived'} CaseStatus */
 

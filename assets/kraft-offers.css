@@ -142,10 +142,12 @@
   /* site aliases */
   --paper: var(--tm-paper);
   --ink: var(--tm-ink);
-  --ink-80: color-mix(in srgb, var(--ink) 80%, var(--paper));
-  --ink-60: color-mix(in srgb, var(--ink) 60%, var(--paper));
-  --ink-35: color-mix(in srgb, var(--ink) 35%, var(--paper));
-  --ink-18: color-mix(in srgb, var(--ink) 18%, var(--paper));
+  /* the four mixed inks, precomputed: color-mix() here resolved per element
+     that used them, across a long document */
+  --ink-80: #3f6057;
+  --ink-60: #6c837a;
+  --ink-35: #a4b0a5;
+  --ink-18: #cbcec3;
   --accent: var(--tm-accent);
   --serif: var(--tm-font-display);
   --sans: var(--tm-font-body);

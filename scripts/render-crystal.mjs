@@ -36,6 +36,8 @@ const BLOCKS = [
       'personal-cost': 'untested'
     },
     title: 'The Decision Crystal: six faces',
+    // below the fold: kept in the document, out of the first layout
+    defer: true,
     indent: '          '
   },
   {
@@ -60,6 +62,7 @@ const BLOCKS = [
     // the check starts having tested nothing
     states: untested,
     title: 'Your decision crystal: six faces, updated as you answer',
+    defer: true,
     indent: '          '
   }
 ];
@@ -108,8 +111,9 @@ for (const block of BLOCKS) {
     // the page carries one geometry block; the crystals point at it
     shared: true
   });
-  html = html.slice(0, from + start.length) + '\n' + block.indent + markup + '\n' + block.indent + html.slice(to);
-  written += markup.length;
+  const body = block.defer ? `<noscript>${markup}</noscript>` : markup;
+  html = html.slice(0, from + start.length) + '\n' + block.indent + body + '\n' + block.indent + html.slice(to);
+  written += body.length;
 }
 
 if (process.argv.includes('--check')) {
