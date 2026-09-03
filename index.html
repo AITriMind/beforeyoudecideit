@@ -25,11 +25,12 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="preload" href="assets/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/literata-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/kraft-offers.css?v=22">
-    <script type="module" src="assets/kraft-offers.js?v=22"></script>
-    <script src="assets/cover.js?v=22" defer></script>
-    <script src="assets/press.js?v=22" defer></script>
-    <script type="module" src="assets/check.js?v=22"></script>
+    <link rel="stylesheet" href="assets/kraft-offers.css?v=23">
+    <script type="module" src="assets/kraft-offers.js?v=23"></script>
+    <script src="assets/cover.js?v=23" defer></script>
+    <script src="assets/press.js?v=23" defer></script>
+    <script type="module" src="assets/check.js?v=23"></script>
+    <script type="module" src="assets/result.js?v=23"></script>
     <!-- GoatCounter slot:
     Create a GoatCounter site, replace MYCODE with its code, and uncomment.
     <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -296,7 +297,13 @@
           <p class="kicker" data-i18n="result.kicker">Your Decision Check</p>
           <h3 data-result-title></h3>
           <p class="result-type" data-result-type></p>
+          <ul class="result-faces" data-result-faces></ul>
+          <div class="result-findings" data-result-findings></div>
           <p data-result-blindspot></p>
+          <div class="result-next-test">
+            <p class="kicker"><span data-i18n="nextTest.label">Next test</span></p>
+            <p class="result-next-test__body" data-result-next-test></p>
+          </div>
           <form class="email-result" data-email-result>
             <!-- Formspree endpoint placeholder:
             Set action="https://formspree.io/f/YOUR_FORM_ID" and remove disabled states when the operator creates the form.
@@ -313,10 +320,29 @@
             <button class="copy-button" type="button" disabled data-i18n="email.submit">Send me my result</button>
             <p class="email-note" data-i18n="email.note">Email sending will be available soon.</p>
           </form>
-          <a class="primary-link" href="https://calendly.com/trmnd-ai/decision-call" data-book-call data-i18n="result.book">Book a free 30-minute call</a>
+          <p class="result-actions">
+            <a class="primary-link" href="https://calendly.com/trmnd-ai/decision-call" data-book-call data-i18n="result.book">Book a free 30-minute call</a>
+            <a class="secondary-link" data-map-download hidden data-i18n="result.download">Download your map</a>
+          </p>
           <p class="door-note" data-door-note></p>
           <p class="copy-status" role="status" aria-live="polite" data-result-status></p>
         </article>
+
+        <section class="scheduler" data-scheduler hidden aria-labelledby="scheduler-heading">
+          <h3 id="scheduler-heading" data-i18n="scheduler.heading">Your map is ready.</h3>
+          <p data-i18n="scheduler.body">Bring it to a 30-minute stress test.</p>
+          <p class="scheduler-actions">
+            <button class="copy-button" type="button" data-scheduler-open data-i18n="scheduler.open">Open scheduling</button>
+            <button class="secondary-link" type="button" data-scheduler-close data-i18n="scheduler.close">Not now</button>
+          </p>
+          <p class="scheduler-status" role="status" data-i18n="scheduler.loading">Loading scheduling</p>
+          <p class="scheduler-error">
+            <span data-i18n="scheduler.error">Scheduling did not load.</span>
+            <a data-scheduler-fallback href="https://calendly.com/trmnd-ai/decision-call" target="_blank" rel="noopener" data-i18n="scheduler.fallback">Open scheduling in a new tab</a>
+            <button class="secondary-link" type="button" data-scheduler-retry data-i18n="scheduler.retry">Try again</button>
+          </p>
+          <div class="scheduler-frame" data-scheduler-frame></div>
+        </section>
 
         <a class="secondary-link contact-share" href="https://t.me/share/url?text=DECISION" data-share="telegram" data-i18n="result.telegram">
           Prefer DM? Send DECISION

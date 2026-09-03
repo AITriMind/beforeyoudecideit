@@ -133,6 +133,16 @@ export const strings = {
       submit: "Send me my result",
       note: "Email sending will be available soon."
     },
+    scheduler: {
+      heading: "Your map is ready.",
+      body: "Bring it to a 30-minute stress test.",
+      open: "Open scheduling",
+      close: "Not now",
+      loading: "Loading scheduling",
+      error: "Scheduling did not load.",
+      fallback: "Open scheduling in a new tab",
+      retry: "Try again"
+    },
     faces: {
       legend: "What this check could look at",
       untested: "not tested here",
@@ -240,7 +250,9 @@ export const strings = {
       statusCopied: " Your answers were copied so you can paste them into the booking form later.",
       answers: "Answers",
       notSelected: "not selected",
-      book: "Book a free 30-minute call",
+      book: "Book a 30-minute stress test",
+      download: "Download your map",
+      noFindings: "No structural contradiction detected. Nothing you answered contradicts anything else you answered.",
       doorNote: "Thirty minutes: your decision in your words, one blind spot, and whether a stress test would help. If it would, I say so once, with the price. If it would not, I say that too.",
       telegram: "Prefer DM? Send DECISION",
       warmTitle: "This check is built around a business that already runs.",
@@ -401,6 +413,16 @@ export const strings = {
       submit: "Отправить результат себе",
       note: "Отправка email скоро будет доступна."
     },
+    scheduler: {
+      heading: "Ваша карта готова.",
+      body: "Принесите её на 30-минутный стресс-тест.",
+      open: "Открыть запись",
+      close: "Не сейчас",
+      loading: "Загружаем запись",
+      error: "Запись не загрузилась.",
+      fallback: "Открыть запись в новой вкладке",
+      retry: "Попробовать снова"
+    },
     faces: {
       legend: "Что эта проверка успела посмотреть",
       untested: "здесь не проверяли",
@@ -508,7 +530,9 @@ export const strings = {
       statusCopied: " Ответы скопированы, чтобы потом вставить их в форму записи.",
       answers: "Ответы",
       notSelected: "не выбрано",
-      book: "Записаться на 30-минутную сессию, бесплатно",
+      book: "Записаться на 30-минутный стресс-тест",
+      download: "Скачать свою карту",
+      noFindings: "Структурных противоречий не найдено. Ничто из того, что вы ответили, не спорит с остальными ответами.",
       doorNote: "Тридцать минут: ваше решение вашими словами, одна вещь, которой вы не видели, и ответ, поможет ли стресс-тест. Если да, скажу один раз, с ценой. Если нет, скажу и это.",
       telegram: "Удобнее в личке? Напишите DECISION",
       warmTitle: "Ваша проверка решения",
