@@ -1643,6 +1643,88 @@ mark.ink {
   border: 0;
 }
 
+/* ---------- case pages ---------- */
+
+.case-article {
+  display: grid;
+  gap: var(--tm-space-5);
+  max-width: 52rem;
+}
+
+.case-article h1 {
+  max-width: 16ch;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+}
+
+.case-article h2 {
+  margin: var(--tm-space-4) 0 0;
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+}
+
+.case-article p {
+  margin: 0;
+}
+
+.case-note {
+  padding: var(--tm-space-3) 0;
+  border-top: var(--rule);
+  border-bottom: var(--rule);
+  font-family: var(--tm-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--tm-ink-muted);
+}
+
+.case-article .crystal-figure {
+  max-width: 22rem;
+}
+
+.case-article .result-finding h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--tm-font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--tm-accent);
+}
+
+.case-list {
+  display: grid;
+  gap: 0;
+  margin: var(--tm-space-5) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--rule-strong);
+  max-width: 52rem;
+}
+
+.case-card {
+  display: grid;
+  gap: 0.5rem;
+  padding: var(--tm-space-5) 0;
+  border-bottom: var(--rule);
+}
+
+.case-card h2 {
+  margin: 0;
+  max-width: none;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+}
+
+.case-card h2 a {
+  text-decoration: none;
+  background: linear-gradient(var(--tm-accent), var(--tm-accent)) no-repeat 0 100% / 0 1px;
+  transition: background-size var(--tm-motion-base) var(--tm-ease-state);
+}
+
+.case-card h2 a:hover {
+  background-size: 100% 1px;
+}
+
+.case-card p {
+  margin: 0;
+  max-width: var(--measure);
+}
+
 /* ---------- faq ---------- */
 
 .faq-list {

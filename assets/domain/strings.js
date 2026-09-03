@@ -19,7 +19,8 @@ export const strings = {
       test: "The test",
       format: "Format",
       about: "About",
-      check: "Decision Check"
+      check: "Decision Check",
+      decisions: "Decisions"
     },
     switchTo: "RU",
     head: {
@@ -321,7 +322,8 @@ export const strings = {
       test: "Тест",
       format: "Формат",
       about: "Кто за этим",
-      check: "Проверка решения"
+      check: "Проверка решения",
+      decisions: "Решения"
     },
     switchTo: "EN",
     head: {
