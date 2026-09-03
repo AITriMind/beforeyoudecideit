@@ -26,8 +26,8 @@ python -m http.server 4174 --bind 127.0.0.1
 
 | Route | LCP | CLS | TBT | Score | Transfer |
 |---|---:|---:|---:|---:|---:|
-| `/` | **3261ms** | 0.001 | 3ms | 87 | 567KB |
-| `/decisions/raising-the-price-of-the-core-package/` | 2103ms | 0.034 | 0ms | 98 | 250KB |
+| `/` | **3267ms** | 0.000 | 0ms | 87 | 568KB |
+| `/decisions/raising-the-price-of-the-core-package/` | 2102ms | 0.000 | 0ms | 98 | 251KB |
 
 Budgets: LCP ≤ 2200ms, CLS ≤ 0.05, TBT ≤ 150ms. CLS and TBT pass everywhere with
 room to spare. The case route passes outright.
@@ -57,6 +57,7 @@ request is a console error and the console must be clean.
 | below-fold crystals deferred with `content-visibility` | none measurable |
 | preloading only the font the LCP text uses | none measurable |
 | shared crystal geometry, −3.1KB of document | **none measurable** — 3261 with it, 3267 without, inside a 120ms spread |
+| `font-display: optional` on every face | **none on LCP** — 3267 before, 3267 after. It did take CLS to 0 on both routes. |
 
 Disabling the cover changed nothing either, so the cover is not on the critical
 path. What is on it: the document itself, and the webfont the hero paragraph is
@@ -66,19 +67,36 @@ The shared-geometry change is kept — the document is smaller and the geometry 
 no longer written three times — but it is kept on its own merits, not as a
 performance win. It was estimated at ~200ms and delivered nothing.
 
-### What would actually close the remaining 1061ms
+### Where the time actually goes
 
-Each is a product decision, and none is taken here:
+Measured, on `/`:
 
-1. **`font-display: optional` on the body font.** LCP is the hero paragraph
-   swapping into IBM Plex Sans, roughly 260ms after first paint. With
-   `optional` the first, uncached visit keeps the fallback and never swaps.
-   Costs the brand face on that visit; would bring LCP down to about FCP.
-2. **Get FCP below 2200 at all.** FCP is 3004ms for an 85KB document under
-   562ms simulated latency, 1.47Mbps and a 4× CPU slowdown. That means cutting
-   the page, not tuning it.
-3. **Subset the fonts to the characters actually used.** The Latin cuts carry
-   the full Google range; a page-specific subset would be a fraction of 68KB.
+| Phase | Simulated |
+|---|---:|
+| document arrives — 84KB at 1.47Mbps behind 562ms of latency | ~1024ms |
+| main-thread work, 528ms observed at a 4× CPU slowdown | ~2112ms |
+| **first contentful paint** | **3004ms** |
+| the hero paragraph becomes the largest paint | +258ms |
+
+Two thirds of it is the main thread, and most of that is style and layout: 221ms
+observed, 883ms at 4×. The document carries three inline crystals with pattern
+fills and 29KB of inlined CSS, 13KB of which the homepage never uses.
+
+`font-display: optional` was tried on this basis and did not help, because LCP
+is not the font swapping in — it is the first paint of that paragraph, and the
+first paint is the wall.
+
+### What is left
+
+1. **Cut the main thread.** The two below-fold crystals still parse and lay out
+   even behind `content-visibility`. Keeping them out of the initial document
+   would mean giving up the guarantee that every crystal is correct without
+   JavaScript — a trade against the reason they are static in the first place.
+2. **Split the stylesheet.** 13KB of the inlined CSS is unused on the homepage.
+   Inlining only what the first screen needs and loading the rest after would
+   cut both transfer and style recalculation.
+3. **Subset the fonts.** The Latin cuts carry the full Google range; a
+   page-specific subset would be a fraction of 68KB.
 4. **Read the field instead of the lab.** These are Lantern projections against
    a local Python file server with no keep-alive and no compression. A real host
    with HTTP/2 and gzip will not look like this. The field target — LCP p75 ≤
