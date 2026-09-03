@@ -10,8 +10,8 @@
  * in S4.7.1 keeps working.
  */
 
-import { FACE_IDS } from './decision.js';
-import { CHECK_QUESTIONS, CHECK_RULESET_VERSION, signalsFor } from './check-config.js';
+import { FACE_IDS, createDecision } from './decision.js';
+import { CHECK_QUESTIONS, CHECK_RULESET_VERSION, categoryFor, signalsFor } from './check-config.js';
 
 /** @typedef {import('./decision.js').DecisionFaceId} DecisionFaceId */
 /** @typedef {import('./decision.js').DecisionFaceState} DecisionFaceState */
@@ -248,4 +248,51 @@ function evidenceFor(rule, optionIds) {
 /** Every option id the configuration knows, for test coverage assertions. */
 export function allOptionIds() {
   return CHECK_QUESTIONS.flatMap((q) => q.options.map((o) => o.id));
+}
+
+/**
+ * Build a complete Decision from selected option ids. The map, the OG plate and
+ * the tests all use this, so a plate is never rendered from an ad-hoc object.
+ *
+ * @param {readonly string[]} optionIds
+ * @param {object} init
+ * @param {string} init.id
+ * @param {string} init.title
+ * @param {object} [init.copy] resolves finding codes to title/body
+ * @param {string} [init.now] ISO-8601 UTC, injected to keep output deterministic
+ * @param {string} [init.slug]
+ * @returns {import('./decision.js').Decision}
+ */
+export function decisionFrom(optionIds, { id, title, copy = null, now = '2026-01-01T00:00:00.000Z', slug }) {
+  const derived = derive(optionIds);
+  const answers = [];
+  for (const q of CHECK_QUESTIONS) {
+    for (const option of q.options) {
+      if (optionIds.includes(option.id)) answers.push({ questionId: q.id, optionId: option.id, answeredAt: now });
+    }
+  }
+  const findings = derived.findings.map((finding) => ({
+    code: finding.code,
+    faceId: finding.faceId,
+    priority: finding.priority,
+    title: copy ? lookup(copy, finding.titleKey) : finding.titleKey,
+    body: copy ? lookup(copy, finding.bodyKey) : finding.bodyKey
+  }));
+  const base = createDecision({ id, questions: CHECK_QUESTIONS, title, category: categoryFor(optionIds), slug, now });
+  return {
+    ...base,
+    status: 'completed',
+    answers,
+    derived: {
+      rulesetVersion: derived.rulesetVersion,
+      faceStates: derived.faceStates,
+      contradictions: derived.contradictions,
+      findings
+    }
+  };
+}
+
+/** @param {object} source @param {string} path */
+function lookup(source, path) {
+  return path.split('.').reduce((value, key) => (value == null ? value : value[key]), source);
 }

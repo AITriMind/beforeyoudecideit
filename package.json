@@ -1,0 +1,17 @@
+{
+  "name": "beforeyoudecideit",
+  "private": true,
+  "type": "module",
+  "description": "Before You Decide — a static site. No bundler and no runtime dependencies; the two packages below are build-only.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/render-crystal.mjs && node scripts/generate-decision-map.mjs --fixture price-change",
+    "check": "node scripts/render-crystal.mjs --check && node --test tests/*.test.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "sharp": "0.35.4"
+  }
+}

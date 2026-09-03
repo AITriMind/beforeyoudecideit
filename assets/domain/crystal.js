@@ -28,6 +28,32 @@ export const CRYSTAL_CONTEXTS = Object.freeze(['hero', 'method', 'wizard', 'resu
 export const CRYSTAL_VIEWBOX = { width: 400, height: 400 };
 
 /**
+ * The token values, as data. The stylesheet is the normative source; a test
+ * asserts these stay equal to it. A standalone SVG — one rasterized outside a
+ * browser — cannot resolve `var()`, so those renders inline these literals.
+ * @type {Readonly<Record<string, string>>}
+ */
+export const TOKEN_VALUES = Object.freeze({
+  '--tm-paper': '#f3eee2',
+  '--tm-paper-strong': '#e6dece',
+  '--tm-surface': '#fffaf0',
+  '--tm-ink': '#123c34',
+  '--tm-ink-muted': '#5e6c65',
+  '--tm-accent': '#9b3d47',
+  '--tm-accent-soft': '#ead7d9',
+  '--tm-rule': '#aaa392'
+});
+
+/**
+ * Replace every `var(--token)` with its literal value.
+ * @param {string} markup
+ * @returns {string}
+ */
+export function resolveTokens(markup) {
+  return markup.replace(/var\((--[a-z-]+)\)/g, (whole, name) => TOKEN_VALUES[name] || whole);
+}
+
+/**
  * An isometric hexagonal prism read as six faces: five outer bands and the
  * inner hexagon. Every face is a closed polygon in viewBox units.
  * @type {Readonly<Record<DecisionFaceId, {points: readonly (readonly [number, number])[], label: readonly [number, number], labelOnInk: boolean}>>}
@@ -240,6 +266,10 @@ const esc = (value) =>
  * @param {Record<string, string>} [options.labels]
  * @param {Record<string, string>} [options.labelI18nKeys] when the host page
  *   translates in the browser, each label also carries its dictionary key
+ * @param {boolean} [options.standalone] inline token literals, for renderers
+ *   with no CSS custom properties
+ * @param {number} [options.size] explicit width and height in px; a nested SVG
+ *   without them fills its parent instead of its box
  * @returns {string} standalone SVG markup
  */
 export function crystalSvgMarkup({
@@ -251,7 +281,9 @@ export function crystalSvgMarkup({
   title = '',
   className = '',
   labels = CRYSTAL_FACE_LABELS,
-  labelI18nKeys = null
+  labelI18nKeys = null,
+  standalone = false,
+  size = 0
 }) {
   if (!CRYSTAL_CONTEXTS.includes(context)) throw new Error(`unknown crystal context: ${context}`);
   const prefix = idPrefix || `tm-crystal-${context}`;
@@ -309,14 +341,15 @@ export function crystalSvgMarkup({
     : `role="img" aria-labelledby="${titleId}"`;
   const titleEl = decorative ? '' : `<title id="${titleId}">${esc(title || 'The Decision Crystal')}</title>`;
 
-  return [
-    `<svg class="tm-crystal tm-crystal--${context}${className ? ` ${className}` : ''}" data-crystal-context="${context}" viewBox="0 0 ${CRYSTAL_VIEWBOX.width} ${CRYSTAL_VIEWBOX.height}" xmlns="http://www.w3.org/2000/svg" ${a11y}>`,
+  const markup = [
+    `<svg class="tm-crystal tm-crystal--${context}${className ? ` ${className}` : ''}" data-crystal-context="${context}"${size ? ` width="${size}" height="${size}"` : ''} viewBox="0 0 ${CRYSTAL_VIEWBOX.width} ${CRYSTAL_VIEWBOX.height}" xmlns="http://www.w3.org/2000/svg" ${a11y}>`,
     titleEl,
     `<defs>${clips}${defs}</defs>`,
     faces,
     labelMarkup,
     '</svg>'
   ].join('');
+  return standalone ? resolveTokens(markup) : markup;
 }
 
 /**
