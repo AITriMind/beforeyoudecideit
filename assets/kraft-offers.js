@@ -78,7 +78,7 @@ const strings = {
       faceTeam: "Team",
       faceTiming: "Timing",
       faceImplementation: "Implementation",
-      facePersonal: "Personal cost",
+      facePersonalCost: "Personal cost",
       plate: "Six faces. One dark, one cracked.",
       copy: "Every decision has six faces: market, money, team, timing, implementation, personal cost. A face that has not been tested stays dark. [[A tested face lights up.]] A cracked one shows where the decision does not hold. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step."
     },
@@ -296,7 +296,7 @@ const strings = {
       faceTeam: "Команда",
       faceTiming: "Время",
       faceImplementation: "Внедрение",
-      facePersonal: "Личная цена",
+      facePersonalCost: "Личная цена",
       plate: "Шесть граней. Одна тёмная, одна треснувшая.",
       copy: "У любого решения шесть граней: рынок, деньги, команда, время, внедрение, личная цена. Пока грань не проверена, она тёмная. [[Проверенная светится.]] Треснувшая показывает, где решение не держится. Карта решения - это ваш кристалл после проверки: видно, какие грани выдержали и над какой стоит поработать до шага."
     },

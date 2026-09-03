@@ -15,8 +15,6 @@
   const marks = [];   // { el, p }
   const plates = [];  // { el, p }
   const sections = [...document.querySelectorAll("[data-head]")];
-  const crystal = document.querySelector("[data-crystal]");
-  const crystalState = { p: -1 };
   const headIndex = document.querySelector("[data-head-index]");
   const headLabel = document.querySelector("[data-head-label]");
   const runningHead = document.querySelector("[data-running-head]");
@@ -90,15 +88,6 @@
           pl.el.classList.toggle("is-printed", p >= 1);
         }
       }
-      if (crystal) {
-        const r = crystal.getBoundingClientRect();
-        const p = clamp((lineY + r.height * 0.5 - r.top) / (r.height * 0.9), 0, 1);
-        if (Math.abs(p - crystalState.p) > 0.004) {
-          crystalState.p = p;
-          crystal.style.setProperty("--p", p.toFixed(3));
-          crystal.classList.toggle("is-printed", p >= 1);
-        }
-      }
     }
 
     // running head: the last section whose top has passed the reading line
@@ -149,15 +138,6 @@
     invalidate();
     updateStepStrings();
   });
-
-  /* ---------- crystal: light a face under the pointer ---------- */
-
-  if (crystal) {
-    crystal.querySelectorAll(".face").forEach((face) => {
-      face.addEventListener("pointerenter", () => face.classList.add("is-lit"));
-      face.addEventListener("pointerleave", () => face.classList.remove("is-lit"));
-    });
-  }
 
   /* ---------- decision check: one question per card ---------- */
 

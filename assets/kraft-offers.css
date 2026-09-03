@@ -811,54 +811,72 @@ mark.ink {
   max-width: 26rem;
 }
 
-.crystal-figure svg {
+/* ---------- TM-02 Decision Crystal ----------
+   State lives in serialized SVG attributes, so the static markup is already
+   correct. CSS only carries the transition between two states; it never
+   supplies a state, and nothing here is driven by scroll. */
+
+.tm-crystal {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.crystal-figure {
-  --p: 1;
+.tm-crystal__face-base,
+.tm-crystal__face-hatch,
+.tm-crystal__face-shape {
+  transition:
+    fill var(--tm-motion-base) var(--tm-ease-state),
+    stroke var(--tm-motion-base) var(--tm-ease-state),
+    stroke-width var(--tm-motion-base) var(--tm-ease-state),
+    stroke-opacity var(--tm-motion-base) var(--tm-ease-state),
+    opacity var(--tm-motion-base) var(--tm-ease-state);
 }
 
-.crystal-figure .face {
-  opacity: clamp(0, calc((var(--p) * 7 - var(--i)) ), 1);
-  transition: opacity var(--t-micro) var(--ease-press);
-  cursor: default;
+.tm-crystal__node {
+  transition:
+    opacity var(--tm-motion-fast) var(--tm-ease-state),
+    fill var(--tm-motion-fast) var(--tm-ease-state),
+    r var(--tm-motion-fast) var(--tm-ease-state);
 }
 
-.crystal-figure .face.is-lit {
-  fill: url(#dots-15);
-  stroke: var(--accent);
-  stroke-width: 2.2;
+.tm-crystal__fracture {
+  transition: opacity var(--tm-motion-state) var(--tm-ease-state);
 }
 
-.crystal-figure .face-dark.is-lit {
-  fill: url(#dots-60);
-}
-
-.crystal-figure .crack polyline {
-  stroke-dasharray: 1;
-  stroke-dashoffset: clamp(0, calc(1 - (var(--p) * 7 - 6)), 1);
-}
-
-.crystal-figure .face-label {
+.tm-crystal__label {
   pointer-events: none;
-  opacity: clamp(0, calc(var(--p) * 7 - 5.5), 1);
-  font-family: var(--mono);
+  font-family: var(--tm-font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  fill: var(--ink);
+  fill: var(--tm-ink);
   paint-order: stroke fill;
-  stroke: var(--paper);
+  stroke: var(--tm-paper);
   stroke-width: 6px;
   stroke-linejoin: round;
+  transition: fill var(--tm-motion-base) var(--tm-ease-state);
 }
 
-.crystal-figure .face-label.on-ink {
-  fill: var(--paper);
-  stroke: var(--ink);
+.tm-crystal__label.is-on-ink {
+  fill: var(--tm-paper);
+  stroke: var(--tm-ink);
+}
+
+/* one-shot entrance, hero only, never scroll-linked */
+.tm-crystal--hero {
+  animation: tm-crystal-enter var(--tm-motion-base) var(--tm-ease-state) both;
+}
+
+@keyframes tm-crystal-enter {
+  from {
+    opacity: 0.92;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .plate-caption {
@@ -1658,9 +1676,19 @@ html.cover-open .cover.is-breaking {
   }
 
   mark.ink,
-  .plate,
-  .crystal-figure {
+  .plate {
     --p: 1 !important;
+  }
+
+  .tm-crystal__face-base,
+  .tm-crystal__face-hatch,
+  .tm-crystal__face-shape,
+  .tm-crystal__node,
+  .tm-crystal__fracture,
+  .tm-crystal__label,
+  .tm-crystal--hero {
+    transition-duration: 0s !important;
+    animation: none !important;
   }
 
   .reading-line {
