@@ -9,10 +9,11 @@
   "scripts": {
     "build": "node scripts/render-crystal.mjs && node scripts/generate-decision-map.mjs --fixture price-change && node scripts/build-pages.mjs && node scripts/inline-css.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node scripts/render-crystal.mjs --check && node scripts/build-pages.mjs --check && node scripts/inline-css.mjs --check && node --test tests/*.test.mjs",
+    "check": "node scripts/render-crystal.mjs --check && node scripts/build-pages.mjs --check && node scripts/inline-css.mjs --check && python scripts/subset-fonts.py --check && node --test tests/*.test.mjs",
     "qa": "node scripts/qa.mjs http://127.0.0.1:4175",
     "perf": "node scripts/perf.mjs http://127.0.0.1:4175",
-    "serve": "node scripts/serve.mjs 4175"
+    "serve": "node scripts/serve.mjs 4175",
+    "fonts": "python scripts/subset-fonts.py"
   },
   "devDependencies": {
     "lighthouse": "^13.4.1",

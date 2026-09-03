@@ -418,9 +418,19 @@
     paint();
   });
 
-  Promise.all([
-    document.fonts.load('400 40px Literata'),
-    document.fonts.load('italic 400 40px Literata'),
-    document.fonts.load('400 13px "IBM Plex Mono"')
-  ]).then(() => paint());
+  // Asking for a face starts its download. The cover's italic cut is 32KB and
+  // nothing above the fold is set in it, so the request waits until the browser
+  // has painted and is idle.
+  const repaintWhenFacesArrive = () =>
+    Promise.all([
+      document.fonts.load('400 40px Literata'),
+      document.fonts.load('italic 400 40px Literata'),
+      document.fonts.load('400 13px "IBM Plex Mono"')
+    ]).then(() => paint());
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(repaintWhenFacesArrive, { timeout: 1000 });
+  } else {
+    requestAnimationFrame(() => requestAnimationFrame(repaintWhenFacesArrive));
+  }
 })();

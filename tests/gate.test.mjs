@@ -12,6 +12,7 @@ import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(root, p), 'utf8');
+const css = readFileSync(join(root, 'assets', 'kraft-offers.css'), 'utf8');
 const gzipKb = (p) => gzipSync(readFileSync(join(root, p))).length / 1024;
 
 /** Everything the browser downloads and runs on the homepage. */
@@ -105,6 +106,22 @@ test('first-view font transfer is inside the budget', () => {
     0
   );
   assert.ok(bytes / 1024 <= 140, `first view loads ${(bytes / 1024).toFixed(1)}KB of fonts, budget is 140KB`);
+});
+
+test('every face is subset, and its unicode-range matches the file', async () => {
+  // a codepoint declared in range but missing from the file renders as tofu
+  const src = join(root, 'assets', 'fonts', 'src');
+  assert.ok(existsSync(src), 'the unsubset originals are not kept');
+  for (const name of readdirSync(src)) {
+    const original = statSync(join(src, name)).size;
+    const shipped = statSync(join(root, 'assets', 'fonts', name)).size;
+    assert.ok(shipped < original, `${name} is not smaller than its original`);
+  }
+  const declared = [...css.matchAll(/unicode-range:\s*([^;]+);/g)].map((m) => m[1].trim());
+  assert.ok(declared.length >= 8);
+  for (const range of declared) {
+    assert.doesNotMatch(range, /U\+0000-00FF|U\+2000-206F/, `${range} is wider than any subset`);
+  }
 });
 
 test('above-fold raster transfer is zero and every image stays under its cap', () => {

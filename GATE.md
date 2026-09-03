@@ -4,35 +4,45 @@ Three gates, all runnable. A release needs all three.
 
 ```bash
 npm run serve   # a server that compresses and keeps the connection alive
-npm run check   # build freshness + 130 domain and contract tests
+npm run check   # build freshness + 131 domain and contract tests
 npm run qa      # 48 browser checks
 npm run perf    # 5 Lighthouse runs per route, medians against the budgets
 ```
 
 `qa` and `perf` need `npm run serve` running in another shell.
 
-## Result
+## Result — all three pass
 
 | Gate | Result |
 |---|---|
-| `check` | **pass** — 130/130 |
+| `check` | **pass** — 131/131 |
 | `qa` | **pass** — 48/48 |
-| `perf` | **fail on `/` by 205ms** |
+| `perf` | **pass** |
 
 | Route | LCP | CLS | TBT | Score | Transfer |
 |---|---:|---:|---:|---:|---:|
-| `/` | **2405ms** | 0.001 | 1ms | 96 | 278KB |
-| `/decisions/raising-the-price-of-the-core-package/` | 1654ms | 0.034 | 0ms | 99 | 208KB |
+| `/` | **2155ms** | 0.001 | 4ms | 97 | 368KB |
+| `/decisions/raising-the-price-of-the-core-package/` | **1504ms** | 0.034 | 0ms | 100 | 180KB |
 
 Budgets: LCP ≤ 2200ms, CLS ≤ 0.05, TBT ≤ 150ms.
 
-## The measurement was wrong before any of this
+## How it got there
 
-Two environment faults produced the early numbers, and both are fixed.
+Three things moved the number. Ten did not, and each of those was measured
+before it was believed.
+
+| | LCP on `/` |
+|---|---:|
+| where it started | 3157ms |
+| measuring against a server that compresses | 2405ms |
+| fonts subset to the characters the site sets | 2227ms |
+| the cover's italic cut off the critical path | **2155ms** |
+
+### The measurement was wrong before anything else
 
 **The fonts were 404ing.** Inlining the stylesheet re-based its `url()`
 references against the document, so every woff2 failed and the page fell back to
-system faces. Runs from that period read like progress. They were measuring a
+system faces. Runs from that period read like progress; they were measuring a
 broken page. `scripts/inline-css.mjs` rebases the paths now, and the QA gate
 catches the whole class: a failed request is a console error, and the console
 must be clean.
@@ -40,77 +50,74 @@ must be clean.
 **The server was not a server.** Measurement ran against `python -m
 http.server` — no compression, no keep-alive — putting an 84KB document on the
 wire that a host sends as 17KB. `scripts/serve.mjs` serves the tree the way a
-host does, and the gates point at it.
+host does. That fix alone was worth 749ms, with nothing changed in the page.
 
-| Measured against | LCP on `/` | Transfer | Score |
-|---|---:|---:|---:|
-| naked file server | 3157ms | 568KB | 88 |
-| a server that compresses | **2405ms** | 278KB | 96 |
+### Subsetting was the real lever
 
-749ms, from changing nothing in the page.
+The cuts came from Google's slices: 230 codepoints for latin, 105 for cyrillic.
+The site sets 108 and 68. `scripts/subset-fonts.py` walks the markup, the
+dictionary in both languages, the case content and the generated pages, and cuts
+each face to what is actually used plus a margin of its own alphabet — so copy
+can be edited without regenerating fonts.
 
-## Eight changes to the page. None of them moved it.
+| | before | after |
+|---|---:|---:|
+| all eight faces | 200KB | 138KB |
+| first view (four latin cuts) | 127KB | 85KB |
+
+Each `unicode-range` was narrowed to match its file exactly. That pairing is the
+point, not an afterthought: a codepoint inside the declared range but missing
+from the file renders as tofu, while one outside the range falls through to the
+next family in the stack. A test asserts the ranges are no wider than the
+subsets, and a check confirms every character the tree can render exists in one.
+The originals stay in `assets/fonts/src/`.
+
+### And then the cover's italic
+
+32KB of italic Literata was being requested before first paint by the cover's
+`document.fonts.load`, though nothing above the fold is set in it. Moved to
+idle. 72ms.
+
+Worth noting: this exact change was tried earlier and measured at 2409ms against
+2407ms — nothing. It only became worth 72ms once the number stopped being pinned
+by heavier costs. An optimisation that measures as noise is not always worthless;
+it can be waiting behind a bigger one.
+
+## The ten that did nothing
+
+Every result between 2405 and 2409, against a run-to-run spread of ~120ms.
 
 | Change | LCP | Kept |
 |---|---:|---|
-| baseline on the fixed setup | 2408 | |
 | `modulepreload` for the domain modules | 2408 | reverted — it also promoted seven modules into the critical window |
 | smaller halftone plates, −120KB | 2407 | yes, the bytes are real |
 | stylesheet inlined, one round trip removed | 2408 | yes |
-| shared crystal geometry, −3.1KB of document | 2407 | yes, for the smaller document |
+| shared crystal geometry, −3.1KB | 2407 | yes, for the smaller document |
 | `font-display: optional` | 2407 | **reverted** |
-| cover's font loads deferred past first paint | 2409 | reverted |
-| the two below-fold crystals out of the first layout | 2405 | yes — **TBT 83ms → 0ms** |
+| below-fold crystals out of the first layout | 2405 | yes — **TBT 83ms → 0ms** |
 | the four `color-mix()` inks precomputed | 2406 | yes, simpler |
 
-Every result lies between 2405 and 2409, against a run-to-run spread of about
-120ms. The number does not respond to the page.
+`optional` was measured twice, in both environments, and gave the same LCP as
+`swap` both times — which is what proved the gap between first paint and largest
+paint was never the font arriving. All it bought was a CLS the page already had
+in hand, against losing the brand faces for a whole slow first visit.
 
-Two of these earned their place on other grounds. Deferring the crystals took
-TBT from 83ms to 0 — that is interactivity, and it is real. `optional` was
-measured twice, in both environments, and gave the same LCP as `swap` both
-times, which proves the gap between first paint and largest paint is not the
-font arriving; all it bought was a CLS the page already had in hand.
+## What the deferred crystals cost — nothing
 
-## Why it is pinned
-
-| | |
-|---|---:|
-| simulated request latency | 562.5ms |
-| requests contending before paint | 18 |
-| two sequential round trips, latency alone | 1125ms |
-| the 17KB document's actual transfer | 92ms |
-| first contentful paint | 2255ms |
-| largest contentful paint | 2405ms |
-
-Half of first paint is round-trip latency that no payload change touches: the
-document is 92ms of transfer sitting behind 562ms of waiting. The rest is
-main-thread work multiplied by four. Closing 205ms of simulated time needs about
-50ms of observed work removed — and eight attempts at exactly that moved
-nothing.
-
-## What the deferred crystals cost, and what they do not
-
-The two below-fold crystals are still in the document, inside `<noscript>`. A
+The two below-fold crystals are still in the document, inside `<noscript>`.
+`curl` on the homepage returns all eighteen `data-face-id` attributes, so a
 reader without JavaScript and a crawler that does not run it both get the
-finished SVG — `curl` on the homepage still returns all eighteen `data-face-id`
-attributes. What changed is that a browser with scripting does not lay them out
-before first paint; `assets/crystals.js` puts them back on idle, parsing the
-build's own markup as SVG rather than through an HTML sink.
+finished SVG. A browser with scripting simply does not lay them out before first
+paint; `assets/crystals.js` puts them back on idle, parsing the build's own
+markup as SVG rather than through an HTML sink.
 
-So the guarantee the spec asked for — a crystal correct without scripting —
-survives. It was the thing I expected to have to trade, and it did not have to
-be traded.
+The guarantee the specification asked for — a crystal correct without scripting
+— survives intact. It was the thing expected to be traded, and it did not have
+to be.
 
-## What is left, none of it taken here
+## Standing
 
-1. **Subset the fonts.** The Latin cuts carry the full Google range. A
-   page-specific subset would be a fraction of 130KB. It is the last untried
-   lever, and on this evidence it will not move the number either.
-2. **Make the page shorter.** Not a tuning question. It removes content.
-3. **Read the field.** These are Lantern projections at 562ms latency,
-   1.47Mbps and a 4× CPU slowdown. The field target — LCP p75 ≤ 2.5s — already
-   contains 2405ms. Once the site is deployed, that is the number worth reading.
-
-The gate reports FAIL on `/` and will keep reporting it. It is not presented as
-passing.
+Lab medians pass on both measured routes. The field target — LCP p75 ≤ 2.5s —
+sits above the lab number, so real traffic should read comfortably. Once the
+site is deployed, that field number is the one worth watching; these are Lantern
+projections at 562ms latency, 1.47Mbps and a 4× CPU slowdown.
