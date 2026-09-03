@@ -79,8 +79,8 @@ const strings = {
       faceTiming: "Timing",
       faceImplementation: "Implementation",
       facePersonalCost: "Personal cost",
-      plate: "Six faces. One dark, one cracked.",
-      copy: "Every decision has six faces: market, money, team, timing, implementation, personal cost. A face that has not been tested stays dark. [[A tested face lights up.]] A cracked one shows where the decision does not hold. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step."
+      plate: "Six faces. One committed, one cracked.",
+      copy: "Every decision has six faces: market, money, team, timing, implementation, personal cost. An untested face stays blank paper. [[A tested face takes hatching and a mark.]] A cracked one shows where the decision does not hold. A face filled with ink is one you have already acted on. Your Decision Map is your crystal after the test: which faces held, and which one deserves work before the step."
     },
     map: {
       title: "What a Decision Map looks like",
@@ -124,6 +124,56 @@ const strings = {
       consent: "You may write to me once to ask how the decision went",
       submit: "Send me my result",
       note: "Email sending will be available soon."
+    },
+    faces: {
+      legend: "What this check could look at",
+      untested: "not tested here",
+      tested: "tested",
+      unresolved: "in play, unresolved",
+      contradicted: "does not hold",
+      committed: "already acted on"
+    },
+    finding: {
+      timingBasis: {
+        title: "Urgency without a basis",
+        body: "The choice reads as made, but nothing outside you sets the clock. Name the external event that makes now better than later; if none exists, the urgency is yours, not the decision's."
+      },
+      fundedDownside: {
+        title: "What is spent is arguing for what is not",
+        body: "Money is on the line and the reason to continue is what it has already cost. That is the past making the next commitment for you."
+      },
+      executableStep: {
+        title: "A date is running while the answer is still being collected",
+        body: "There is a deadline and the work is still gathering. Collecting is not deciding, and the date will arrive either way."
+      },
+      teamOpposition: {
+        title: "Pushed toward a step someone required opposes",
+        body: "The pressure to move comes from around you, and a person you need is not with you. Both cannot be true at execution time."
+      },
+      confirmationSeeking: {
+        title: "Certainty with real exposure and no checking",
+        body: "The checking stopped and something material is at stake. Confidence is not the problem; how long ago it stopped being tested is."
+      },
+      broadExposure: {
+        title: "Broad exposure while the read is still swinging",
+        body: "Several things are at stake and you cannot yet tell fear from excitement. That is two questions being answered as one."
+      }
+    },
+    nextTest: {
+      label: "Next test",
+      timingBasis: "Name the external event that makes now better than later; if none exists, remove the urgency.",
+      fundedDownside: "Set a funded loss limit before treating the decision as committed.",
+      executableStep: "Define the next action, owner, and reversible checkpoint before the deadline.",
+      teamOpposition: "Resolve the opposed or missing execution owner before treating the decision as committed.",
+      confirmationSeeking: "Write the strongest reason not to proceed and seek evidence for it before collecting more confirmation.",
+      broadExposure: "Split the question in two: what must be true in a year, and what could go wrong at what cost.",
+      faceMarket: "Collect one external demand signal that can change the decision.",
+      faceMoney: "Define the maximum funded downside before proceeding.",
+      faceTeam: "Name the execution owner and resolve required opposition.",
+      faceTiming: "Name the external deadline or remove timing from the argument.",
+      faceImplementation: "Define the next reversible action and owner.",
+      facePersonalCost: "Write the strongest disconfirming case before seeking more confirmation.",
+      clean: "Name the condition that would make this decision wrong and set a review date."
     },
     q: {
       business: "Do you run a business today?",
@@ -297,8 +347,8 @@ const strings = {
       faceTiming: "Время",
       faceImplementation: "Внедрение",
       facePersonalCost: "Личная цена",
-      plate: "Шесть граней. Одна тёмная, одна треснувшая.",
-      copy: "У любого решения шесть граней: рынок, деньги, команда, время, внедрение, личная цена. Пока грань не проверена, она тёмная. [[Проверенная светится.]] Треснувшая показывает, где решение не держится. Карта решения - это ваш кристалл после проверки: видно, какие грани выдержали и над какой стоит поработать до шага."
+      plate: "Шесть граней. Одна закоммичена, одна треснувшая.",
+      copy: "У любого решения шесть граней: рынок, деньги, команда, время, внедрение, личная цена. Непроверенная грань остаётся пустой бумагой. [[Проверенная получает штриховку и марку.]] Треснувшая показывает, где решение не держится. Залитая краской — та, на которую вы уже пошли. Карта решения - это ваш кристалл после проверки: видно, какие грани выдержали и над какой стоит поработать до шага."
     },
     map: {
       title: "Так выглядит Карта решения",
@@ -342,6 +392,56 @@ const strings = {
       consent: "Можно один раз написать мне, как прошло решение",
       submit: "Отправить результат себе",
       note: "Отправка email скоро будет доступна."
+    },
+    faces: {
+      legend: "Что эта проверка успела посмотреть",
+      untested: "здесь не проверяли",
+      tested: "проверено",
+      unresolved: "в игре, не решено",
+      contradicted: "не держится",
+      committed: "шаг уже сделан"
+    },
+    finding: {
+      timingBasis: {
+        title: "Срочность без основания",
+        body: "Выбор читается как сделанный, но часы не заводит ничто снаружи. Назовите внешнее событие, из-за которого сейчас лучше, чем позже; если его нет, срочность ваша, а не решения."
+      },
+      fundedDownside: {
+        title: "Потраченное спорит за то, что ещё не потрачено",
+        body: "На кону деньги, а довод продолжать — то, сколько уже стоило. Это прошлое принимает за вас следующее вложение."
+      },
+      executableStep: {
+        title: "Срок идёт, пока ответ всё ещё собирают",
+        body: "Дата есть, а работа продолжает собирать информацию. Собирать — не решать, и дата наступит в любом случае."
+      },
+      teamOpposition: {
+        title: "Вас подталкивают к шагу, против которого нужный человек",
+        body: "Давление идти исходит от окружения, а человек, без которого не сделать, не с вами. На исполнении оба факта одновременно не живут."
+      },
+      confirmationSeeking: {
+        title: "Уверенность при настоящей ставке и без проверки",
+        body: "Проверка остановилась, а на кону существенное. Проблема не в уверенности, а в том, как давно её перестали проверять."
+      },
+      broadExposure: {
+        title: "Широкая ставка при качелях в оценке",
+        body: "На кону сразу несколько вещей, а страх от азарта пока не отличить. Это два разных вопроса, на которые отвечают как на один."
+      }
+    },
+    nextTest: {
+      label: "Следующая проверка",
+      timingBasis: "Назовите внешнее событие, из-за которого сейчас лучше, чем позже; если его нет, снимите срочность.",
+      fundedDownside: "Задайте предел потерь, который вы готовы профинансировать, до того как считать решение принятым.",
+      executableStep: "Опишите следующее действие, ответственного и обратимую точку контроля до наступления срока.",
+      teamOpposition: "Решите вопрос с несогласным или отсутствующим исполнителем до того, как считать решение принятым.",
+      confirmationSeeking: "Запишите самый сильный довод не идти и поищите подтверждения ему, а не своему выбору.",
+      broadExposure: "Разделите вопрос надвое: что должно быть правдой через год и что может пойти не так и во сколько обойдётся.",
+      faceMarket: "Соберите один внешний сигнал спроса, который способен изменить решение.",
+      faceMoney: "Определите максимальный убыток, который вы можете покрыть.",
+      faceTeam: "Назовите исполнителя и снимите необходимое несогласие.",
+      faceTiming: "Назовите внешний срок или уберите время из аргументации.",
+      faceImplementation: "Опишите следующее обратимое действие и ответственного.",
+      facePersonalCost: "Запишите самый сильный опровергающий довод, прежде чем искать новые подтверждения.",
+      clean: "Назовите условие, при котором это решение окажется неверным, и поставьте дату пересмотра."
     },
     q: {
       business: "У вас сегодня есть работающий бизнес?",

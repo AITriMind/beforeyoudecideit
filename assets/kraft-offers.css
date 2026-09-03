@@ -1100,6 +1100,30 @@ mark.ink {
   text-underline-offset: 0.3em;
 }
 
+/* ---------- the wizard crystal ---------- */
+
+.wizard-crystal {
+  margin: 0 0 var(--tm-space-6);
+  max-width: 15rem;
+}
+
+.wizard-crystal .plate-caption {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.25rem 0.5rem;
+}
+
+.face-legend {
+  grid-column: 1 / -1;
+  color: var(--tm-ink);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.face-legend:empty {
+  display: none;
+}
+
 /* ---------- decision check: ruled form, no cards ---------- */
 
 .decision-check {
@@ -1629,6 +1653,35 @@ html.cover-open .cover.is-breaking {
   .decision-check fieldset {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 2rem;
+  }
+
+  /* the crystal sits beside the questions and stays with them while answering */
+  .check-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    column-gap: var(--tm-space-8);
+  }
+
+  .check-section > h2,
+  .check-section > p,
+  .check-section > .decision-check,
+  .check-section > .decision-result,
+  .check-section > .contact-share {
+    grid-column: 1;
+  }
+
+  .wizard-crystal {
+    grid-column: 2;
+    grid-row: 3 / span 3;
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+    justify-self: end;
+    margin: 0;
+  }
+
+  .check-section > .contact-share {
+    justify-self: start;
   }
 
   .decision-check legend {
