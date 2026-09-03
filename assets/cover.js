@@ -408,14 +408,19 @@
     if (!document.hidden && !state.painted) repaintSoon();
   });
 
+  // Paint at once with whatever the system has, so first paint does not wait on
+  // a download; the brand fonts and the plate repaint over it when they arrive.
+  paint();
+  root.classList.add("is-ready");
+
+  loadPlate().then((img) => {
+    state.img = img;
+    paint();
+  });
+
   Promise.all([
-    loadPlate(),
     document.fonts.load('400 40px Literata'),
     document.fonts.load('italic 400 40px Literata'),
     document.fonts.load('400 13px "IBM Plex Mono"')
-  ]).then(([img]) => {
-    state.img = img;
-    paint();
-    root.classList.add("is-ready");
-  });
+  ]).then(() => paint());
 })();

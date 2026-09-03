@@ -821,6 +821,11 @@ mark.ink {
   max-width: 26rem;
 }
 
+.crystal-figure .tm-crystal,
+.wizard-crystal .tm-crystal {
+  aspect-ratio: 1;
+}
+
 /* ---------- TM-02 Decision Crystal ----------
    State lives in serialized SVG attributes, so the static markup is already
    correct. CSS only carries the transition between two states; it never
@@ -830,6 +835,15 @@ mark.ink {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* A hatched crystal is expensive to lay out. The hero's is on the first paint
+   and stays eager; the two below the fold reserve their box and are laid out
+   when they come near. The DOM is untouched: this defers work, not content. */
+.crystal-figure .tm-crystal,
+.wizard-crystal .tm-crystal {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100% auto 1px;
 }
 
 .tm-crystal__face-base,
@@ -2081,12 +2095,15 @@ html.cover-open .cover.is-breaking {
     display: none;
   }
 
+  /* zero, not 1ms: the release gate requires a finished state, and nothing in
+     this tree waits for a transitionend event */
   *,
   *::before,
   *::after {
-    animation-duration: 1ms !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
+    transition-duration: 0s !important;
   }
 }
 

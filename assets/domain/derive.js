@@ -10,8 +10,8 @@
  * in S4.7.1 keeps working.
  */
 
-import { FACE_IDS, createDecision } from './decision.js';
-import { CHECK_QUESTIONS, CHECK_RULESET_VERSION, categoryFor, signalsFor } from './check-config.js';
+import { FACE_IDS, createDecision } from './decision.js?v=26';
+import { CHECK_QUESTIONS, CHECK_RULESET_VERSION, categoryFor, signalsFor } from './check-config.js?v=26';
 
 /** @typedef {import('./decision.js').DecisionFaceId} DecisionFaceId */
 /** @typedef {import('./decision.js').DecisionFaceState} DecisionFaceState */

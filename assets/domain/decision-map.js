@@ -9,8 +9,8 @@
  * input always produces the same bytes.
  */
 
-import { FACE_IDS } from './decision.js';
-import { TOKEN_VALUES, crystalSvgMarkup } from './crystal.js';
+import { FACE_IDS } from './decision.js?v=26';
+import { TOKEN_VALUES, crystalSvgMarkup } from './crystal.js?v=26';
 
 /** @typedef {'decision-map'|'og'} DecisionPlateVariant */
 

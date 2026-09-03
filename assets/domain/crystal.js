@@ -16,7 +16,7 @@
  * JavaScript.
  */
 
-import { FACE_IDS } from './decision.js';
+import { FACE_IDS } from './decision.js?v=26';
 
 /** @typedef {import('./decision.js').DecisionFaceId} DecisionFaceId */
 /** @typedef {import('./decision.js').DecisionFaceState} DecisionFaceState */

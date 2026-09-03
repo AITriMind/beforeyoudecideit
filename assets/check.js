@@ -11,10 +11,10 @@
  * still shows six untested faces and the check still works.
  */
 
-import { FACE_IDS } from './domain/decision.js';
-import { applyCrystalStates } from './domain/crystal.js';
-import { QUESTION_BY_INPUT_NAME, categoryFor, optionIdFor } from './domain/check-config.js';
-import { derive } from './domain/derive.js';
+import { FACE_IDS } from './domain/decision.js?v=26';
+import { applyCrystalStates } from './domain/crystal.js?v=26';
+import { QUESTION_BY_INPUT_NAME, categoryFor, optionIdFor } from './domain/check-config.js?v=26';
+import { derive } from './domain/derive.js?v=26';
 
 const form = document.querySelector('[data-decision-check]');
 const crystal = document.querySelector('[data-wizard-crystal] .tm-crystal');

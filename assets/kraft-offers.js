@@ -3,7 +3,7 @@
  * Copy lives in ./domain/strings.js so build scripts can read the same words.
  */
 
-import { copiedByLang, optionLabels, strings } from './domain/strings.js';
+import { copiedByLang, optionLabels, strings } from './domain/strings.js?v=26';
 
 let currentLang = "en";
 

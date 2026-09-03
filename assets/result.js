@@ -9,15 +9,15 @@
  * derived from the same Decision the crystal reads.
  */
 
-import { FACE_IDS } from './domain/decision.js';
-import { decisionFrom } from './domain/derive.js';
-import { decisionMapSvg } from './domain/decision-map.js';
+import { FACE_IDS } from './domain/decision.js?v=26';
+import { decisionFrom } from './domain/derive.js?v=26';
+import { decisionMapSvg } from './domain/decision-map.js?v=26';
 import {
   SCHEDULER_TIMEOUT_MS,
   bookingUrl,
   providerAllowed,
   schedulerTransition
-} from './domain/scheduler.js';
+} from './domain/scheduler.js?v=26';
 
 const result = document.querySelector('[data-decision-result]');
 const form = document.querySelector('[data-decision-check]');
