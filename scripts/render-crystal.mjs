@@ -39,6 +39,22 @@ const BLOCKS = [
     indent: '          '
   },
   {
+    name: 'hero',
+    context: 'hero',
+    // a demonstration state, not a decision: one face tested, one in play, the
+    // rest still blank. It is never persisted and never reaches analytics.
+    states: {
+      market: 'tested',
+      money: 'untested',
+      team: 'untested',
+      timing: 'unresolved',
+      implementation: 'untested',
+      'personal-cost': 'untested'
+    },
+    decorative: true,
+    indent: '          '
+  },
+  {
     name: 'wizard',
     context: 'wizard',
     // the check starts having tested nothing
@@ -72,6 +88,7 @@ for (const block of BLOCKS) {
     context: block.context,
     states: block.states,
     title: block.title,
+    decorative: Boolean(block.decorative),
     labelI18nKeys: LABEL_KEYS
   });
   html = html.slice(0, from + start.length) + '\n' + block.indent + markup + '\n' + block.indent + html.slice(to);
