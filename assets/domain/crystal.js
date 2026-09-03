@@ -253,6 +253,47 @@ const esc = (value) =>
 
 /* ---------- markup ---------- */
 
+/** The id prefix a page-level shared geometry block uses. */
+export const SHARED_PREFIX = 'tmc';
+
+/**
+ * The geometry, emitted once for a whole page.
+ *
+ * Three crystals repeating the same polygons, clips, hatches and fractures is
+ * roughly ten kilobytes of duplicate path data in the document, and the
+ * document is on the critical path. This block carries them once; each crystal
+ * references it.
+ *
+ * Only for a page that hosts several crystals. A standalone SVG — one rendered
+ * outside a browser — stays self-contained.
+ *
+ * @returns {string}
+ */
+export function crystalSharedDefs() {
+  const faces = FACE_IDS.map((faceId) => {
+    const d = path(CRYSTAL_FACES[faceId].points);
+    return (
+      `<path id="${SHARED_PREFIX}-face-${faceId}" d="${d}"/>` +
+      `<path id="${SHARED_PREFIX}-fracture-${faceId}" d="${fracturePath(CRYSTAL_FACES[faceId].points)}"/>` +
+      `<clipPath id="${SHARED_PREFIX}-clip-${faceId}"><use href="#${SHARED_PREFIX}-face-${faceId}"/></clipPath>`
+    );
+  }).join('');
+  const hatches = Object.keys(HATCH).map((name) => hatchPattern(`${SHARED_PREFIX}-hatch-${name}`, name)).join('');
+  return `<svg class="tm-crystal-defs" aria-hidden="true" focusable="false" width="0" height="0" xmlns="http://www.w3.org/2000/svg"><defs>${faces}${hatches}</defs></svg>`;
+}
+
+/**
+ * @param {string} id
+ * @param {string} name
+ */
+function hatchPattern(id, name) {
+  const { spacing, cross, stroke } = HATCH[name];
+  const lines = cross
+    ? `<path d="M0 0 L${spacing} ${spacing}" stroke="${stroke}" stroke-width="1"/><path d="M${spacing} 0 L0 ${spacing}" stroke="${stroke}" stroke-width="1"/>`
+    : `<path d="M-1 1 L1 -1 M0 ${spacing} L${spacing} 0 M${spacing - 1} ${spacing + 1} L${spacing + 1} ${spacing - 1}" stroke="${stroke}" stroke-width="1"/>`;
+  return `<pattern id="${id}" width="${spacing}" height="${spacing}" patternUnits="userSpaceOnUse">${lines}</pattern>`;
+}
+
 /**
  * @param {object} options
  * @param {DecisionCrystalContext} options.context
@@ -270,6 +311,8 @@ const esc = (value) =>
  *   with no CSS custom properties
  * @param {number} [options.size] explicit width and height in px; a nested SVG
  *   without them fills its parent instead of its box
+ * @param {boolean} [options.shared] reference the page's shared geometry block
+ *   instead of carrying a copy of it
  * @returns {string} standalone SVG markup
  */
 export function crystalSvgMarkup({
@@ -283,7 +326,8 @@ export function crystalSvgMarkup({
   labels = CRYSTAL_FACE_LABELS,
   labelI18nKeys = null,
   standalone = false,
-  size = 0
+  size = 0,
+  shared = false
 }) {
   if (!CRYSTAL_CONTEXTS.includes(context)) throw new Error(`unknown crystal context: ${context}`);
   const prefix = idPrefix || `tm-crystal-${context}`;
@@ -293,34 +337,39 @@ export function crystalSvgMarkup({
     if (style.hatch) usedHatches.add(style.hatch);
   }
 
-  const clips = FACE_IDS.map(
-    (faceId) =>
-      `<clipPath id="${prefix}-clip-${faceId}"><path d="${path(CRYSTAL_FACES[faceId].points)}"/></clipPath>`
-  ).join('');
-
-  const defs = [...usedHatches]
-    .map((name) => {
-      const { spacing, cross, stroke } = HATCH[name];
-      const lines = cross
-        ? `<path d="M0 0 L${spacing} ${spacing}" stroke="${stroke}" stroke-width="1"/><path d="M${spacing} 0 L0 ${spacing}" stroke="${stroke}" stroke-width="1"/>`
-        : `<path d="M-1 1 L1 -1 M0 ${spacing} L${spacing} 0 M${spacing - 1} ${spacing + 1} L${spacing + 1} ${spacing - 1}" stroke="${stroke}" stroke-width="1"/>`;
-      return `<pattern id="${prefix}-hatch-${name}" width="${spacing}" height="${spacing}" patternUnits="userSpaceOnUse">${lines}</pattern>`;
-    })
-    .join('');
+  // a shared page block owns the geometry; a self-contained SVG carries its own
+  const geometry = shared ? SHARED_PREFIX : prefix;
+  const clips = shared
+    ? ''
+    : FACE_IDS.map(
+        (faceId) =>
+          `<clipPath id="${prefix}-clip-${faceId}"><path d="${path(CRYSTAL_FACES[faceId].points)}"/></clipPath>`
+      ).join('');
+  const defs = shared
+    ? ''
+    : [...usedHatches].map((name) => hatchPattern(`${prefix}-hatch-${name}`, name)).join('');
 
   const faces = FACE_IDS.map((faceId) => {
     const face = CRYSTAL_FACES[faceId];
     const state = states[faceId] || 'untested';
     const a = faceAttributes(state);
-    const d = path(face.points);
     const [nx, ny] = centroid(face.points);
-    const hatchFill = a.hatchFill === 'none' ? 'none' : `url(#${prefix}-${a.hatchFill})`;
+    const hatchFill = a.hatchFill === 'none' ? 'none' : `url(#${geometry}-${a.hatchFill})`;
+    const shape = shared
+      ? (cls, attrs) => `<use class="${cls}" href="#${SHARED_PREFIX}-face-${faceId}" ${attrs}/>`
+      : (cls, attrs) => `<path class="${cls}" d="${path(face.points)}" ${attrs}/>`;
+    const crack = shared
+      ? `<use class="tm-crystal__fracture" href="#${SHARED_PREFIX}-fracture-${faceId}"`
+      : `<path class="tm-crystal__fracture" d="${fracturePath(face.points)}"`;
     return [
       `<g class="tm-crystal__face" data-face-id="${faceId}" data-face-state="${state}">`,
-      `<path class="tm-crystal__face-base" d="${d}" fill="${a.baseFill}"/>`,
-      `<path class="tm-crystal__face-hatch" d="${d}" fill="${hatchFill}" opacity="${a.hatchOpacity}"/>`,
-      `<path class="tm-crystal__face-shape" d="${d}" fill="none" stroke="${a.stroke}" stroke-width="${a['stroke-width']}" stroke-opacity="${a['stroke-opacity']}"${a['stroke-dasharray'] ? ` stroke-dasharray="${a['stroke-dasharray']}"` : ''} stroke-linejoin="round"/>`,
-      `<path class="tm-crystal__fracture" clip-path="url(#${prefix}-clip-${faceId})" d="${fracturePath(face.points)}" fill="none" stroke="var(--tm-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="${a.fractureOpacity}"/>`,
+      shape('tm-crystal__face-base', `fill="${a.baseFill}"`),
+      shape('tm-crystal__face-hatch', `fill="${hatchFill}" opacity="${a.hatchOpacity}"`),
+      shape(
+        'tm-crystal__face-shape',
+        `fill="none" stroke="${a.stroke}" stroke-width="${a['stroke-width']}" stroke-opacity="${a['stroke-opacity']}"${a['stroke-dasharray'] ? ` stroke-dasharray="${a['stroke-dasharray']}"` : ''} stroke-linejoin="round"`
+      ),
+      `${crack} clip-path="url(#${geometry}-clip-${faceId})" fill="none" stroke="var(--tm-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="${a.fractureOpacity}"/>`,
       `<circle class="tm-crystal__node" cx="${nx.toFixed(1)}" cy="${(ny + (faceId === 'timing' ? 22 : 16)).toFixed(1)}" r="${a.nodeR}" fill="${a.nodeFill}" stroke="${a.nodeStroke}" stroke-width="${a.nodeStrokeWidth}" opacity="${a.nodeOpacity}"/>`,
       '</g>'
     ].join('');
@@ -342,7 +391,7 @@ export function crystalSvgMarkup({
   const titleEl = decorative ? '' : `<title id="${titleId}">${esc(title || 'The Decision Crystal')}</title>`;
 
   const markup = [
-    `<svg class="tm-crystal tm-crystal--${context}${className ? ` ${className}` : ''}" data-crystal-context="${context}"${size ? ` width="${size}" height="${size}"` : ''} viewBox="0 0 ${CRYSTAL_VIEWBOX.width} ${CRYSTAL_VIEWBOX.height}" xmlns="http://www.w3.org/2000/svg" ${a11y}>`,
+    `<svg class="tm-crystal tm-crystal--${context}${className ? ` ${className}` : ''}" data-crystal-context="${context}" data-geometry="${geometry}"${size ? ` width="${size}" height="${size}"` : ''} viewBox="0 0 ${CRYSTAL_VIEWBOX.width} ${CRYSTAL_VIEWBOX.height}" xmlns="http://www.w3.org/2000/svg" ${a11y}>`,
     titleEl,
     `<defs>${clips}${defs}</defs>`,
     faces,
@@ -362,8 +411,9 @@ export function crystalSvgMarkup({
  */
 export function applyCrystalStates(svg, states) {
   if (!svg) return;
-  const prefix = svg.querySelector('title')?.id.replace(/-title$/, '') || svg.dataset.crystalContext;
-  ensureHatchPatterns(svg, states, prefix);
+  const prefix = svg.dataset.geometry || svg.dataset.crystalContext;
+  // a shared block already carries every pattern; a self-contained one may not
+  if (prefix !== SHARED_PREFIX) ensureHatchPatterns(svg, states, prefix);
   for (const faceId of FACE_IDS) {
     const group = svg.querySelector(`[data-face-id="${faceId}"]`);
     if (!group) continue;

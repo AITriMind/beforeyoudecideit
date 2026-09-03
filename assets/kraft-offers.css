@@ -831,6 +831,14 @@ mark.ink {
    correct. CSS only carries the transition between two states; it never
    supplies a state, and nothing here is driven by scroll. */
 
+/* the shared geometry block is referenced, never seen */
+.tm-crystal-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .tm-crystal {
   display: block;
   width: 100%;

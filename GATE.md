@@ -14,7 +14,7 @@ npm run perf    # 5 Lighthouse runs per route, medians against the budgets
 python -m http.server 4174 --bind 127.0.0.1
 ```
 
-## Result at f18a542 + phase 8
+## Result
 
 | Gate | Result |
 |---|---|
@@ -26,52 +26,63 @@ python -m http.server 4174 --bind 127.0.0.1
 
 | Route | LCP | CLS | TBT | Score | Transfer |
 |---|---:|---:|---:|---:|---:|
-| `/` | **3189ms** | 0.001 | 5ms | 88 | 568KB |
+| `/` | **3261ms** | 0.001 | 3ms | 87 | 567KB |
 | `/decisions/raising-the-price-of-the-core-package/` | 2103ms | 0.034 | 0ms | 98 | 250KB |
 
 Budgets: LCP ≤ 2200ms, CLS ≤ 0.05, TBT ≤ 150ms. CLS and TBT pass everywhere with
 room to spare. The case route passes outright.
 
-### Why `/` misses, measured rather than guessed
+### Read the numbers with this correction in hand
 
-Lighthouse's mobile profile simulates 562ms of latency per request, 1.47Mbps and
-a 4× CPU slowdown. Under it:
+An earlier round of tuning was measured against a page whose fonts were
+silently 404ing: inlining the stylesheet had re-based its `url()` references
+against the document, so every woff2 failed and the page fell back to system
+faces. Those runs reported FCP 2404ms and looked like progress. They were
+measuring a broken page.
 
-- first contentful paint is **2404ms** and is bounded by the document itself —
-  88KB, of which 29KB is the inlined stylesheet and 24KB is three static
-  crystals;
-- LCP is the hero paragraph, which arrives **785ms later**, when IBM Plex Sans
-  swaps in.
+With the fonts actually loading, the honest figures are FCP ≈ 3004ms and LCP
+≈ 3260ms, and the run-to-run spread on `/` is about 120ms. Anything smaller
+than that is noise, not a result.
 
-Things that were tried and measured, not assumed:
+The 404 is fixed and the QA gate now catches its whole class, because a failed
+request is a console error and the console must be clean.
 
-| Change | LCP |
-|---|---:|
-| starting point | 3392ms |
-| `modulepreload` for the domain modules | 3364ms |
-| smaller halftone plates (−120KB), body font preloaded | 3392ms |
-| stylesheet inlined, one round trip removed | 3007ms |
-| below-fold crystals deferred with `content-visibility` | 3007ms |
-| preloading only the font the LCP text uses | **3189ms** with fonts working |
+### What was tried, and what it was actually worth
 
-Disabling the cover changed nothing (FCP 2404 either way), so the cover is not
-on the critical path.
+| Change | Effect on LCP |
+|---|---|
+| `modulepreload` for the domain modules | none measurable |
+| smaller halftone plates (−120KB of transfer) | none measurable |
+| stylesheet inlined, one round trip removed | not separable from the font bug; kept, it is sound on its own terms |
+| below-fold crystals deferred with `content-visibility` | none measurable |
+| preloading only the font the LCP text uses | none measurable |
+| shared crystal geometry, −3.1KB of document | **none measurable** — 3261 with it, 3267 without, inside a 120ms spread |
 
-### What would close the remaining 989ms
+Disabling the cover changed nothing either, so the cover is not on the critical
+path. What is on it: the document itself, and the webfont the hero paragraph is
+set in.
 
-Each is a product decision, not an engineering one, and none is taken here:
+The shared-geometry change is kept — the document is smaller and the geometry is
+no longer written three times — but it is kept on its own merits, not as a
+performance win. It was estimated at ~200ms and delivered nothing.
 
-1. **`font-display: optional` on the body font.** The first visit keeps the
-   fallback and never swaps, so LCP collapses onto FCP (≈2400ms). Costs the
-   brand typeface on a first, uncached visit.
-2. **Cut the document.** The three crystals repeat their geometry; emitting the
-   faces once and referencing them would save roughly 11KB. Worth ~200ms.
-3. **Subset the fonts to the characters the page uses.** The Latin cuts carry
+### What would actually close the remaining 1061ms
+
+Each is a product decision, and none is taken here:
+
+1. **`font-display: optional` on the body font.** LCP is the hero paragraph
+   swapping into IBM Plex Sans, roughly 260ms after first paint. With
+   `optional` the first, uncached visit keeps the fallback and never swaps.
+   Costs the brand face on that visit; would bring LCP down to about FCP.
+2. **Get FCP below 2200 at all.** FCP is 3004ms for an 85KB document under
+   562ms simulated latency, 1.47Mbps and a 4× CPU slowdown. That means cutting
+   the page, not tuning it.
+3. **Subset the fonts to the characters actually used.** The Latin cuts carry
    the full Google range; a page-specific subset would be a fraction of 68KB.
-4. **Accept the simulated figure.** These are Lantern projections against a
-   local Python file server with no keep-alive and no compression. A real host
-   with HTTP/2 and gzip will not look like this; the field target (LCP p75 ≤
-   2.5s) should be read from real traffic once the site is deployed.
+4. **Read the field instead of the lab.** These are Lantern projections against
+   a local Python file server with no keep-alive and no compression. A real host
+   with HTTP/2 and gzip will not look like this. The field target — LCP p75 ≤
+   2.5s — should be read from real traffic once the site is deployed.
 
 Nothing here is presented as passing. The gate reports FAIL on `/` and will keep
 reporting it until one of the above is chosen.

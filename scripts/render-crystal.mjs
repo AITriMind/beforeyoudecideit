@@ -13,7 +13,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { FACE_IDS } from '../assets/domain/decision.js';
-import { crystalSvgMarkup } from '../assets/domain/crystal.js';
+import { crystalSharedDefs, crystalSvgMarkup } from '../assets/domain/crystal.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const target = join(root, 'index.html');
@@ -75,6 +75,21 @@ const original = readFileSync(target, 'utf8');
 let html = original;
 let written = 0;
 
+// the shared geometry, written once before the crystals that reference it
+{
+  const start = '<!-- crystal:defs:start -->';
+  const end = '<!-- crystal:defs:end -->';
+  const from = html.indexOf(start);
+  const to = html.indexOf(end);
+  if (from === -1 || to === -1) {
+    console.error(`markers for the shared defs not found in ${target}`);
+    process.exit(1);
+  }
+  const defs = crystalSharedDefs();
+  html = html.slice(0, from + start.length) + defs + html.slice(to);
+  written += defs.length;
+}
+
 for (const block of BLOCKS) {
   const start = `<!-- crystal:${block.name}:start -->`;
   const end = `<!-- crystal:${block.name}:end -->`;
@@ -89,7 +104,9 @@ for (const block of BLOCKS) {
     states: block.states,
     title: block.title,
     decorative: Boolean(block.decorative),
-    labelI18nKeys: LABEL_KEYS
+    labelI18nKeys: LABEL_KEYS,
+    // the page carries one geometry block; the crystals point at it
+    shared: true
   });
   html = html.slice(0, from + start.length) + '\n' + block.indent + markup + '\n' + block.indent + html.slice(to);
   written += markup.length;
